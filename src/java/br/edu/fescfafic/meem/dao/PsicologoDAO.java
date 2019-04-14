@@ -5,11 +5,17 @@
  */
 package br.edu.fescfafic.meem.dao;
 
+import br.edu.fescfafic.meem.model.Endereco;
 import br.edu.fescfafic.meem.model.Psicologo;
 import br.edu.fescfafic.meem.util.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -45,5 +51,39 @@ public class PsicologoDAO {
             System.out.println("Erro:PsicologoDAO:cadastrar = " + ex);
         }
         return false;
+    }
+    
+    public List<Psicologo> listar(){
+        try {
+            List<Psicologo> psicologos = new ArrayList<>();
+            String sql = "SELECT * FROM psicologo";
+            PreparedStatement stmt = this.connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                Psicologo psicologo = new Psicologo();
+                psicologo.setId(rs.getInt("id"));
+                psicologo.setNome(rs.getString("nome"));
+                psicologo.setSobrenome(rs.getString("sobrenome"));
+                
+                Endereco endereco = new Endereco();
+                endereco.setRua(rs.getString("rua"));
+                endereco.setBairro(rs.getString("bairro"));
+                endereco.setCidade(rs.getString("cidade"));
+                endereco.setEstado(rs.getString("estado"));
+                
+                psicologo.setEndereco(endereco);
+                psicologo.setUsuario("usuario");
+                psicologo.setSenha("senha");
+                
+                psicologos.add(psicologo);
+            }
+            rs.close();
+            stmt.close();
+            return psicologos;
+        } catch (SQLException ex) {
+            System.out.println("Erro:PsicologoDAO:listar = " + ex);
+        }
+        return null;
     }
 }
