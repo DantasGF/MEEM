@@ -1,0 +1,75 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 13/04/2019, 19:12:52
+    Author     : Gutemberg
+*/
+html, body{
+    margin: 0;
+    background: #ebedf0;
+}
+
+#barra_horizontal_topo{
+    border: 1px Solid #009ACD;
+    background:#009ACD;
+    height: 60px;
+    box-shadow: 2px 5px 5px #CCC;
+}
+
+#barra_horizontal_topo > h3{
+    font-family: arial;
+    color: black;
+    margin-left: 80px;
+    margin-top: -30px;
+    font-size: 12px;
+}
+
+#logo_psicologia{
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+#caixa-login{
+    border: 1px Solid #CCC;
+    background: White;
+    width: 450px;
+    padding: 10px;
+    height: 350px;
+    margin-top: 150px;
+    box-shadow: 2px 2px 10px #CCC;
+    border-radius: 10px;
+}
+
+#caixa-login-titulo{
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    font-family: Arial;
+    font-size: 12px;
+    padding: 20px;
+    border-bottom: 1px Solid #CCC;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: -10px;
+    background: #009ACD;
+    color: black;
+    font-weight: bold;
+}
+
+#campo-login{
+    padding: 8px;
+    width: 350px;
+    margin-top: 15px;
+}
+
+.botao-login{
+    margin-top: 15px;
+    width: 120px;
+    padding: 8px;
+}
+
+img{
+    vertical-align: middle;
+}
