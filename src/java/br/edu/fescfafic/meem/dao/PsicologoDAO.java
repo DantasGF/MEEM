@@ -14,8 +14,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -31,18 +29,21 @@ public class PsicologoDAO {
     
     public boolean cadastrar(Psicologo psicologo){
         try {
-            String sql = "INSERT INTO psicologo (nome, sobrenome, rua, bairro,"
-                    + " cidade, estado, usuario, senha) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO psicologo (nome, sobrenome, sexo, rua, bairro,"
+                    + " cidade, estado, usuario, senha, email) "
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             
             PreparedStatement stmt = this.connection.prepareStatement(sql);
             stmt.setString(1, psicologo.getNome());
             stmt.setString(2, psicologo.getSobrenome());
-            stmt.setString(3, psicologo.getEndereco().getRua());
-            stmt.setString(4, psicologo.getEndereco().getBairro());
-            stmt.setString(5, psicologo.getEndereco().getCidade());
-            stmt.setString(6, psicologo.getEndereco().getEstado());
-            stmt.setString(7, psicologo.getUsuario());
-            stmt.setString(8, psicologo.getSenha());
+            stmt.setString(3, psicologo.getSexo());
+            stmt.setString(4, psicologo.getEndereco().getRua());
+            stmt.setString(5, psicologo.getEndereco().getBairro());
+            stmt.setString(6, psicologo.getEndereco().getCidade());
+            stmt.setString(7, psicologo.getEndereco().getEstado());
+            stmt.setString(8, psicologo.getUsuario());
+            stmt.setString(9, psicologo.getSenha());
+            stmt.setString(10, psicologo.getEmail());
             
             stmt.execute();
             stmt.close();

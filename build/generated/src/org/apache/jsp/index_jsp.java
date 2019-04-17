@@ -43,14 +43,20 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
 
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "includes/topo.jsp", out, false);
       out.write("\n");
+      out.write("    <div id=\"barra_horizontal_topo\">\n");
+      out.write("        <img id=\"logo_psicologia\" src=\"imagens/psicologia_icone.png\" width=\"40\" height=\"40\"/>\n");
+      out.write("        <h3>Mini Exame do Estado Mental</h3>\n");
+      out.write("    </div>\n");
       out.write("    <center><div id=\"caixa-login\">\n");
-      out.write("        <div id=\"caixa-login-titulo\">Faça seu login</div><br>\n");
-      out.write("        <table border=\"0\">\n");
+      out.write("            <div id=\"caixa-login-titulo\"><img src=\"imagens/chave.png\" width=\"20\" height=\"20\"/> Faça seu login</div><br>\n");
+      out.write("        <br><table border=\"0\">\n");
       out.write("            <tr>\n");
-      out.write("                <td><input id=\"campo-login\" name=\"usuario\" placeholder=\"Usuário\"></td>\n");
+      out.write("                <td><img src=\"imagens/usuario.png\" width=\"20\" height=\"20\"/>\n");
+      out.write("                    <input id=\"campo-login\" name=\"usuario\" placeholder=\"Usuário\"></td>\n");
       out.write("            </tr>\n");
       out.write("            <tr>\n");
-      out.write("                <td><input id=\"campo-login\" name=\"senha\" placeholder=\"Senha\" type=\"password\"></td>\n");
+      out.write("                <td><img src=\"imagens/senha.png\" width=\"20\" height=\"20\"/> \n");
+      out.write("                    <input id=\"campo-login\" name=\"senha\" placeholder=\"Senha\" type=\"password\"></td>\n");
       out.write("            </tr>\n");
       out.write("            <tr>\n");
       out.write("                <td><center><input class=\"botao-login\" type=\"submit\"></center></td>\n");

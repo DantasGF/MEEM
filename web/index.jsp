@@ -17,7 +17,10 @@
             <tr>
                 <td><center><input class="botao-login" type="submit"></center></td>
             </tr>
-        </table>
+        </table><br>
+        <div id="aviso-caixa-login">
+            Não possui cadastro? Cadastre-se <a href="cadastro-psicologo.jsp"><b>aqui!</b></a>
+        </div><br>
     </div></center>
     </body>
 </html>

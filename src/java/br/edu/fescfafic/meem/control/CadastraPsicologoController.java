@@ -24,12 +24,14 @@ public class CadastraPsicologoController extends HttpServlet {
             throws ServletException, IOException {
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");
+        String sexo = request.getParameter("sexo");
         String rua = request.getParameter("rua");
         String bairro = request.getParameter("bairro");
         String cidade = request.getParameter("cidade");
         String estado = request.getParameter("estado");
         String usuario = request.getParameter("usuario");
         String senha = request.getParameter("senha");
+        String email = request.getParameter("email");
         
         Endereco endereco = new Endereco();
         endereco.setRua(rua);
@@ -40,14 +42,16 @@ public class CadastraPsicologoController extends HttpServlet {
         Psicologo psicologo = new Psicologo();
         psicologo.setNome(nome);
         psicologo.setSobrenome(sobrenome);
+        psicologo.setSexo(sexo);
         psicologo.setEndereco(endereco);
         psicologo.setUsuario(usuario);
         psicologo.setSenha(senha);
+        psicologo.setEmail(email);
         
         PsicologoDAO psicologoDAO = new PsicologoDAO();
         psicologoDAO.cadastrar(psicologo);
         
-        String url = "http://localhost:8080/MEEM/index.jsp";
+        String url = "http://localhost:8080/MEEM/sucesso-cadastro.jsp";
         response.sendRedirect(url);
     }
 

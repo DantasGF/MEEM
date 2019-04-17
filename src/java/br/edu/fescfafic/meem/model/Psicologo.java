@@ -14,9 +14,11 @@ public class Psicologo {
     private int id;
     private String nome;
     private String sobrenome;
+    private String sexo;
     private Endereco endereco;
     private String usuario;
     private String senha;
+    private String email;
     
     public Psicologo(){
         
@@ -42,6 +44,14 @@ public class Psicologo {
         return sobrenome;
     }
 
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+    
     public void setSobrenome(String sobrenome) {
         this.sobrenome = sobrenome;
     }
@@ -69,7 +79,13 @@ public class Psicologo {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
-    
-    
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }
