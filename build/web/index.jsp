@@ -26,6 +26,7 @@
             <div id="aviso-caixa-login">
                 Não possui cadastro? Cadastre-se <a href="cadastro-psicologo.jsp"><b>aqui!</b></a>
             </div><br>
+            
         </div></center>           
                
     </form>
