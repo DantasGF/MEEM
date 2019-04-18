@@ -5,6 +5,7 @@
  */
 package br.edu.fescfafic.meem.dao;
 
+import br.edu.fescfafic.meem.model.Login;
 import br.edu.fescfafic.meem.util.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,13 +24,13 @@ public class LoginDAO {
         this.connection = new ConnectionFactory().getConnection();
     }
     
-    public boolean validar(String usuario, String senha){
+    public boolean validar(Login login){
         try {
             String sql = "SELECT * FROM psicologo "
                     + "WHERE usuario = ? and senha = ?";
             PreparedStatement stmt = this.connection.prepareStatement(sql);
-            stmt.setString(1, usuario);
-            stmt.setString(2, senha);
+            stmt.setString(1, login.getUsuario());
+            stmt.setString(2, login.senha);
             
             ResultSet rs = stmt.executeQuery();
             if(rs.next()){
@@ -45,13 +46,13 @@ public class LoginDAO {
         return false;
     }
     
-    public boolean alterarLogin(int id, String usuario, String senha){
+    public boolean alterarLogin(int id, Login login){
         String sql = "UPDATE psicologo SET usuario = ?, senha = ? where id=?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
 
-            stmt.setString(1, usuario);
-            stmt.setString(2, senha);
+            stmt.setString(1, login.getUsuario());
+            stmt.setString(2, login.senha);
             stmt.setInt(2,id);
             stmt.execute();
             stmt.close();
@@ -63,13 +64,13 @@ public class LoginDAO {
         return false;
     }
     
-     public int idLogin(String usuario, String senha){
+     public int idLogin(Login login){
         try {
             String sql = "SELECT * FROM psicologo "
                     + "WHERE usuario = ? and senha = ?";
             PreparedStatement stmt = this.connection.prepareStatement(sql);
-            stmt.setString(1, usuario);
-            stmt.setString(2, senha);
+            stmt.setString(1, login.getUsuario());
+            stmt.setString(2, login.senha);
             
             ResultSet rs = stmt.executeQuery();
             if(rs.next()){

@@ -6,6 +6,7 @@
 package br.edu.fescfafic.meem.control;
 
 import br.edu.fescfafic.meem.dao.LoginDAO;
+import br.edu.fescfafic.meem.model.Login;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -35,10 +36,14 @@ public class LoginPsicologoController extends HttpServlet {
         String usuario = request.getParameter("usuario");
         String senha = request.getParameter("senha");
         
+        Login login = new Login();
+        login.setUsuario(usuario);
+        login.setSenha(senha);
+        
         LoginDAO lg = new LoginDAO();
         
         RequestDispatcher rd = null;
-        if (lg.validar(usuario, senha) == true) {
+        if (lg.validar(login) == true) {
             String url = "sucesso-login.jsp";
             response.sendRedirect(url);
         }
