@@ -12,11 +12,11 @@
                 <table border="0">
                 <tr>
                     <td><img src="imagens/usuario.png" width="20" height="20"/>
-                        <input required="true" autocomplete="on" minlength="5" maxlength="15"  id="campo-login" name="usuario" placeholder="Usuário"></td>
+                        <input required="true" autocomplete="on" id="campo-login" name="usuario" placeholder="Usuário"></td>
                 </tr>
                 <tr>
                     <td><img src="imagens/senha.png" width="20" height="20"/> 
-                        <input required="true" autocomplete="on" minlength="5" maxlength="15" id="campo-login" name="senha" placeholder="Senha" type="password"></td>
+                        <input required="true" autocomplete="on" id="campo-login" name="senha" placeholder="Senha" type="password"></td>
                 </tr>
                 <tr>
                     <td><center><input class="botao-login" type="submit" name="login" value="Login"></center></td>
