@@ -4,9 +4,17 @@
         <servlet-name>CadastraPsicologoController</servlet-name>
         <servlet-class>br.edu.fescfafic.meem.control.CadastraPsicologoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginPsicologoController</servlet-name>
+        <servlet-class>br.edu.fescfafic.meem.control.LoginPsicologoController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CadastraPsicologoController</servlet-name>
         <url-pattern>/CadastraPsicologoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginPsicologoController</servlet-name>
+        <url-pattern>/LoginPsicologoController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
