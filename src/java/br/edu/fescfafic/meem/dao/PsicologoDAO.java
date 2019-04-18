@@ -6,6 +6,7 @@
 package br.edu.fescfafic.meem.dao;
 
 import br.edu.fescfafic.meem.model.Endereco;
+import br.edu.fescfafic.meem.model.Login;
 import br.edu.fescfafic.meem.model.Psicologo;
 import br.edu.fescfafic.meem.util.ConnectionFactory;
 import java.sql.Connection;
@@ -41,8 +42,8 @@ public class PsicologoDAO {
             stmt.setString(5, psicologo.getEndereco().getBairro());
             stmt.setString(6, psicologo.getEndereco().getCidade());
             stmt.setString(7, psicologo.getEndereco().getEstado());
-            stmt.setString(8, psicologo.getUsuario());
-            stmt.setString(9, psicologo.getSenha());
+            stmt.setString(8, psicologo.getLogin().getUsuario());
+            stmt.setString(9, psicologo.getLogin().getSenha());
             stmt.setString(10, psicologo.getEmail());
             
             stmt.execute();
@@ -74,8 +75,10 @@ public class PsicologoDAO {
                 endereco.setEstado(rs.getString("estado"));
                 
                 psicologo.setEndereco(endereco);
-                psicologo.setUsuario("usuario");
-                psicologo.setSenha("senha");
+                Login login = new Login();
+                login.setUsuario("usuario");
+                login.setSenha("senha");
+                psicologo.setLogin(login);
                 
                 psicologos.add(psicologo);
             }

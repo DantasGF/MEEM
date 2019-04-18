@@ -7,6 +7,7 @@ package br.edu.fescfafic.meem.control;
 
 import br.edu.fescfafic.meem.dao.PsicologoDAO;
 import br.edu.fescfafic.meem.model.Endereco;
+import br.edu.fescfafic.meem.model.Login;
 import br.edu.fescfafic.meem.model.Psicologo;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -44,8 +45,12 @@ public class CadastraPsicologoController extends HttpServlet {
         psicologo.setSobrenome(sobrenome);
         psicologo.setSexo(sexo);
         psicologo.setEndereco(endereco);
-        psicologo.setUsuario(usuario);
-        psicologo.setSenha(senha);
+        
+        Login login = new Login();
+        login.setUsuario(usuario);
+        login.setSenha(senha);
+        
+        psicologo.setLogin(login);
         psicologo.setEmail(email);
         
         PsicologoDAO psicologoDAO = new PsicologoDAO();
