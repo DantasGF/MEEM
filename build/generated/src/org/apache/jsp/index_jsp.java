@@ -56,11 +56,11 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <table border=\"0\">\r\n");
       out.write("                <tr>\r\n");
       out.write("                    <td><img src=\"imagens/usuario.png\" width=\"20\" height=\"20\"/>\r\n");
-      out.write("                        <input required=\"true\" autocomplete=\"on\" minlength=\"5\" maxlength=\"15\"  id=\"campo-login\" name=\"usuario\" placeholder=\"Usuário\"></td>\r\n");
+      out.write("                        <input required=\"true\" autocomplete=\"on\" id=\"campo-login\" name=\"usuario\" placeholder=\"Usuário\"></td>\r\n");
       out.write("                </tr>\r\n");
       out.write("                <tr>\r\n");
       out.write("                    <td><img src=\"imagens/senha.png\" width=\"20\" height=\"20\"/> \r\n");
-      out.write("                        <input required=\"true\" autocomplete=\"on\" minlength=\"5\" maxlength=\"15\" id=\"campo-login\" name=\"senha\" placeholder=\"Senha\" type=\"password\"></td>\r\n");
+      out.write("                        <input required=\"true\" autocomplete=\"on\" id=\"campo-login\" name=\"senha\" placeholder=\"Senha\" type=\"password\"></td>\r\n");
       out.write("                </tr>\r\n");
       out.write("                <tr>\r\n");
       out.write("                    <td><center><input class=\"botao-login\" type=\"submit\" name=\"login\" value=\"Login\"></center></td>\r\n");
