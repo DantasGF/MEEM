@@ -8,28 +8,35 @@
                 <div id="caixa-login-titulo">Cadastro de Psicólogo</div><br>
             <br><table border="0">
                 <tr>
-                    <td><input id="campo-login" name="nome" placeholder="Nome"></td>
+                    <td><input required="true" autofocus="true" id="campo-login"
+                               name="nome" placeholder="Nome"></td>
                 </tr>
                 <tr>
-                    <td><input id="campo-login" name="sobrenome" placeholder="Sobrenome"></td>
+                    <td><input required="true" id="campo-login" name="sobrenome" placeholder="Sobrenome"></td>
                 </tr>
                 <tr>
-                    <td><br><center><input class="campo-login" name="sexo" value="M" type="radio">Masculino
-                    <input class="campo-login" name="sexo" value="F" type="radio">Feminino</center>
+                    <td><br><center><input required="true" 
+                                           class="campo-login" name="sexo"
+                                           value="M" type="radio">Masculino
+                    <input class="campo-login" name="sexo" value="F" 
+                           type="radio">Feminino</center>
                     </td>
                 </tr>
                 <tr>
-                    <td><input id="campo-login" name="rua" placeholder="Rua"></td>
+                    <td><input required="true" id="campo-login" 
+                               name="rua" placeholder="Rua"></td>
                 </tr>
                 <tr>
-                    <td><input id="campo-login" name="bairro" placeholder="Bairro"></td>
+                    <td><input required="true" id="campo-login" 
+                               name="bairro" placeholder="Bairro"></td>
                 </tr>
                 <tr>
-                    <td><input id="campo-login" name="cidade" placeholder="Cidade"></td>
+                    <td><input required="true" id="campo-login" 
+                               name="cidade" placeholder="Cidade"></td>
                 </tr>
                 <tr>
                     <td><center>
-                        <select id="campo-login" name="estado">
+                        <select required="true" id="campo-login" name="estado">
                             <option value="AC">Acre</option>
                             <option value="AL">Alagoas</option>
                             <option value="AP">Amapá</option>
@@ -61,16 +68,20 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><input id="campo-login" name="email" placeholder="Email"></td>
+                    <td><input required="true" id="campo-login" 
+                               name="email" placeholder="Email"></td>
                 </tr>
                 <tr>
-                    <td><input id="campo-login" name="usuario" placeholder="Usuário"></td>
+                    <td><input required="true" id="campo-login" 
+                               name="usuario" placeholder="Usuário"></td>
                 </tr>
                 <tr>
-                    <td><input id="campo-login" name="senha" placeholder="Senha" type="password"></td>
+                    <td><input required="true" id="campo-login" 
+                               name="senha" placeholder="Senha" type="password"></td>
                 </tr>
                 <tr>
-                    <td><center><input class="botao-login" type="submit" value="Cadastrar"></center></td>
+                    <td><center><input class="botao-login" 
+                                   type="submit" value="Cadastrar"></center></td>
                 </tr>
             </table><br>
             </div></center>
