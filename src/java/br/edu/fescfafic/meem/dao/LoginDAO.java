@@ -46,13 +46,12 @@ public class LoginDAO {
         return false;
     }
     
-    public boolean alterarLogin(int id, Login login){
-        String sql = "UPDATE psicologo SET usuario = ?, senha = ? where id=?";
+    public boolean alterarSenha(int id, String senha){
+        String sql = "UPDATE psicologo SET senha = ? where id=?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
 
-            stmt.setString(1, login.getUsuario());
-            stmt.setString(2, login.senha);
+            stmt.setString(1, senha);
             stmt.setInt(2,id);
             stmt.execute();
             stmt.close();
@@ -64,13 +63,11 @@ public class LoginDAO {
         return false;
     }
     
-     public int idLogin(Login login){
+    public int idLogin(String usuario){
         try {
-            String sql = "SELECT * FROM psicologo "
-                    + "WHERE usuario = ? and senha = ?";
+            String sql = "SELECT * FROM psicologo WHERE usuario = ? and senha = ?";
             PreparedStatement stmt = this.connection.prepareStatement(sql);
-            stmt.setString(1, login.getUsuario());
-            stmt.setString(2, login.senha);
+            stmt.setString(1, usuario);
             
             ResultSet rs = stmt.executeQuery();
             if(rs.next()){
@@ -84,5 +81,25 @@ public class LoginDAO {
             System.out.println("Erro:LoginDAO:validar = " + ex);
         }
         return 0;
+    }
+    
+    public boolean validarUsuario(String usuario){
+        try {
+            String sql = "SELECT * FROM psicologo WHERE usuario = ?";
+            PreparedStatement stmt = this.connection.prepareStatement(sql);
+            stmt.setString(1, usuario);
+            
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+                rs.close();
+                stmt.close();
+                return true;
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException ex) {
+            System.out.println("Erro:LoginDAO:validar = " + ex);
+        }
+        return false;
     }
 }

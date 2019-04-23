@@ -6,6 +6,7 @@
 package br.edu.fescfafic.meem.control;
 
 import br.edu.fescfafic.meem.dao.LoginDAO;
+import br.edu.fescfafic.meem.dao.PsicologoDAO;
 import br.edu.fescfafic.meem.model.Login;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -40,12 +42,17 @@ public class LoginPsicologoController extends HttpServlet {
         login.setUsuario(usuario);
         login.setSenha(senha);
         
-        LoginDAO lg = new LoginDAO();
-        
-        RequestDispatcher rd = null;
-        if (lg.validar(login) == true) {
-            String url = "sucesso-login.jsp";
-            response.sendRedirect(url);
+        LoginDAO loginDAO = new LoginDAO();
+
+        if (loginDAO.validar(login) == true) {
+            //String url = "sucesso-login.jsp";
+            //response.sendRedirect(url);
+            request.setAttribute("psicologo", new PsicologoDAO()
+                    .buscarPsicologoLogin(login));
+            request.getRequestDispatcher("./area-psicologo.jsp")
+                    .forward(request, response);
+            HttpSession sessao = request.getSession();
+            sessao.setAttribute("logado", "ok");
         }
         else{
             String url = "erro-login.jsp";

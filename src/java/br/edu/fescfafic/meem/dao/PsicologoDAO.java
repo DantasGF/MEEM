@@ -15,6 +15,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -87,6 +89,38 @@ public class PsicologoDAO {
             return psicologos;
         } catch (SQLException ex) {
             System.out.println("Erro:PsicologoDAO:listar = " + ex);
+        }
+        return null;
+    }
+    
+    public Psicologo buscarPsicologoLogin(Login login){
+        try {
+            String sql = "SELECT * FROM psicologo WHERE usuario = ? and senha = ?";
+            PreparedStatement stmt = this.connection.prepareStatement(sql);
+            
+            stmt.setString(1, login.getUsuario());
+            stmt.setString(2, login.getSenha());
+            
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+                Psicologo psicologo = new Psicologo();
+                psicologo.setId(rs.getInt("id"));
+                psicologo.setNome(rs.getString("nome"));
+                psicologo.setSobrenome(rs.getString("sobrenome"));
+                
+                Endereco endereco = new Endereco();
+                endereco.setRua(rs.getString("rua"));
+                endereco.setBairro(rs.getString("bairro"));
+                endereco.setCidade(rs.getString("cidade"));
+                endereco.setEstado(rs.getString("estado"));
+                psicologo.setEndereco(endereco);
+                
+                return psicologo;
+            }
+            stmt.close();
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.println("Erro:PsicologoDAO:buscarPsicologoLogin = " + ex);
         }
         return null;
     }
