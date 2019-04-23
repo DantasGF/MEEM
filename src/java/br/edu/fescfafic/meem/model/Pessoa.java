@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  *
- * @author Gutemberg
+ * @author Laelkayo
  */
 public class Pessoa {
     

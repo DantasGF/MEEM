@@ -9,6 +9,7 @@ import br.edu.fescfafic.meem.model.Endereco;
 import br.edu.fescfafic.meem.model.Paciente;
 import br.edu.fescfafic.meem.util.ConnectionFactory;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,7 +30,7 @@ public class PacienteDAO {
     public boolean cadastrar(Paciente paciente){
         try {
             String sql = "INSERT INTO psicologo (nome, sobrenome, rua, bairro,"
-                    + " cidade, estado, sexo, telefone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    + " cidade, estado, sexo, telefone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             
             PreparedStatement stmt = this.connection.prepareStatement(sql);
             stmt.setString(1, paciente.getNome());
@@ -40,7 +41,8 @@ public class PacienteDAO {
             stmt.setString(6, paciente.getEndereco().getEstado());
             stmt.setString(7, paciente.getSexo());
             stmt.setString(8, paciente.getTelefone());
-            stmt.setString(9, paciente.getDataNascimento());
+            stmt.setDate(9, (Date) paciente.getDataNascimento());
+            stmt.setString(10, paciente.getIdade());
             
             stmt.execute();
             stmt.close();
@@ -73,7 +75,8 @@ public class PacienteDAO {
                 paciente.setEndereco(endereco);
                 paciente.setSexo("sexo");
                 paciente.setTelefone("telefone");
-                paciente.setDataNascimento("dataNascimento");
+                //paciente.setDataNascimento("dataNascimento);
+                paciente.setIdade("idade");
                 
                 pacientes.add(paciente);
             }

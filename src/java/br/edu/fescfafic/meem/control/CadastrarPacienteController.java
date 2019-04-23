@@ -6,10 +6,8 @@
 package br.edu.fescfafic.meem.control;
 
 import br.edu.fescfafic.meem.dao.PacienteDAO;
-import br.edu.fescfafic.meem.dao.PsicologoDAO;
 import br.edu.fescfafic.meem.model.Endereco;
 import br.edu.fescfafic.meem.model.Paciente;
-import br.edu.fescfafic.meem.model.Psicologo;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -44,7 +42,9 @@ public class CadastrarPacienteController extends HttpServlet {
         String estado = request.getParameter("estado");
         String sexo = request.getParameter("sexo");
         String telefone = request.getParameter("telefone");
-        String DataNascimento = request.getParameter("DataNascimento");
+        //String DataNascimento = request.getParameter("DataNascimento");
+        String idade = request.getParameter("idade");
+        
         
         Endereco endereco = new Endereco();
         endereco.setRua(rua);
@@ -59,7 +59,8 @@ public class CadastrarPacienteController extends HttpServlet {
         paciente.setEndereco(endereco);
         paciente.setSexo(sexo);
         paciente.setTelefone(telefone);
-        paciente.setDataNascimento(DataNascimento);
+        //paciente.setDataNascimento(DataNascimento);
+        paciente.setIdade(idade);
         
         PacienteDAO pacienteDAO = new PacienteDAO();
         pacienteDAO.cadastrar(paciente);
