@@ -15,6 +15,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -87,5 +89,19 @@ public class PacienteDAO {
             System.out.println("Erro:PacienteDAO:listar = " + ex);
         }
         return null;
+    }
+    
+    public boolean excluir(int id){
+        try {
+            String sql = "DELET FROM paciente WHERE id = ?";
+            PreparedStatement stmt = this.connection.prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.execute();
+            stmt.close();
+            return true;
+        } catch (SQLException ex) {
+            System.out.println("Erro:PacienteDAO:excluir = " + ex);
+        }
+        return false;
     }
 }

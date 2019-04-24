@@ -30,7 +30,7 @@ public class LoginDAO {
                     + "WHERE usuario = ? and senha = ?";
             PreparedStatement stmt = this.connection.prepareStatement(sql);
             stmt.setString(1, login.getUsuario());
-            stmt.setString(2, login.senha);
+            stmt.setString(2, login.getSenha());
             
             ResultSet rs = stmt.executeQuery();
             if(rs.next()){

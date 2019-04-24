@@ -20,6 +20,10 @@
         <servlet-name>ListarPacientesController</servlet-name>
         <servlet-class>br.edu.fescfafic.meem.control.ListarPacientesController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ExcluirPacienteController</servlet-name>
+        <servlet-class>br.edu.fescfafic.meem.control.ExcluirPacienteController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CadastraPsicologoController</servlet-name>
         <url-pattern>/CadastraPsicologoController</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>ListarPacientesController</servlet-name>
         <url-pattern>/ListarPacientesController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcluirPacienteController</servlet-name>
+        <url-pattern>/ExcluirPacienteController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

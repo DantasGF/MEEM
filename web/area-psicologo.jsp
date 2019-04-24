@@ -1,5 +1,14 @@
+<%@page import="br.edu.fescfafic.meem.model.Psicologo"%>
 <jsp:include page="includes/topo.jsp"/>
-<jsp:include page="includes/verifica-sessao.jsp"/>
+<% 
+    HttpSession sessao = request.getSession();
+    Psicologo psicologo = (Psicologo) session.getAttribute("psicologo");
+    
+    if(psicologo == null){
+        response.sendRedirect("./index.jsp");
+    }
+    else{
+%>
         <div id="barra_lateral_esquerda">
             <ul>
                 <li><a href="cadastro-paciente.jsp"><img src="imagens/usuario2.png"
@@ -32,3 +41,4 @@
         </div></center>
     </body>
 </html>
+<% } %>
