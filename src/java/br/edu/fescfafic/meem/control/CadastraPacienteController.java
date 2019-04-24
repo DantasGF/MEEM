@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.edu.fescfafic.meem.control;
 
 import br.edu.fescfafic.meem.dao.PacienteDAO;
 import br.edu.fescfafic.meem.model.Endereco;
 import br.edu.fescfafic.meem.model.Paciente;
+import br.edu.fescfafic.meem.model.Psicologo;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,34 +13,20 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Laelkayo
+ * @author Gutemberg
  */
-public class CadastrarPacienteController extends HttpServlet {
+public class CadastraPacienteController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        Psicologo psicologo = (Psicologo)request.getSession().getAttribute("psicologo");
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");
+        String sexo = request.getParameter("sexo");
         String rua = request.getParameter("rua");
         String bairro = request.getParameter("bairro");
         String cidade = request.getParameter("cidade");
         String estado = request.getParameter("estado");
-        String sexo = request.getParameter("sexo");
-        String telefone = request.getParameter("telefone");
-        //String DataNascimento = request.getParameter("DataNascimento");
-        String idade = request.getParameter("idade");
-        
         
         Endereco endereco = new Endereco();
         endereco.setRua(rua);
@@ -52,22 +34,20 @@ public class CadastrarPacienteController extends HttpServlet {
         endereco.setCidade(cidade);
         endereco.setEstado(estado);
         
+        Psicologo psicologoModel = new Psicologo();
+        psicologo.setId(psicologo.getId());
+        
         Paciente paciente = new Paciente();
         paciente.setNome(nome);
         paciente.setSobrenome(sobrenome);
         paciente.setSexo(sexo);
         paciente.setEndereco(endereco);
-        paciente.setSexo(sexo);
-        paciente.setTelefone(telefone);
-        //paciente.setDataNascimento(DataNascimento);
-        paciente.setIdade(idade);
+        paciente.setPsicologo(psicologo);
         
         PacienteDAO pacienteDAO = new PacienteDAO();
         pacienteDAO.cadastrar(paciente);
         
-        String url = "http://localhost:8080/MEEM/sucesso-cadastro.jsp";
-        response.sendRedirect(url);
-        }
+        response.sendRedirect("./ListarPacientesController");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

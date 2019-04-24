@@ -3,7 +3,7 @@
         <img id="logo_psicologia" src="imagens/psicologia_icone.png" width="40" height="40"/>
         <h3>Mini Exame do Estado Mental</h3>
     </div>
-    <form action="./CadastraPsicologoController" method="POST">
+    <form action="./CadastrarPsicologoController" method="POST"><br><br><br>
         <center><div id="caixa-login">
                 <div id="caixa-login-titulo">Cadastro de Psicólogo</div><br>
             <br><table border="0">

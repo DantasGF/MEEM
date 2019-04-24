@@ -45,7 +45,7 @@ html, body{
     width: 450px;
     padding: 10px;
     /*height: 350px;*/
-    margin-top: 100px;
+    margin-top: 20px;
     box-shadow: 2px 2px 10px #CCC;
     border-radius: 10px;
 }
@@ -79,4 +79,72 @@ html, body{
 
 img{
     vertical-align: middle;
+}
+
+#barra_lateral_esquerda{
+    border-right: 1px Solid #CCC;
+    background: #333;
+    width: 250px;
+    height: 100%;
+    position: absolute;
+}
+
+#barra_lateral_esquerda > ul{
+    border-bottom: 0.1px Solid #444;
+}
+
+ul, li{
+    list-style: none;
+}
+
+ul, li > a{
+    text-decoration: none;
+    vertical-align: middle;
+    color: #B8B8B8;
+    padding-left: 10px;
+    padding-bottom: 15px;
+}
+
+#area_principal{
+    /*border: 1px Solid #CCC;
+    background: white;*/
+    /*width: 60%;*/
+    /*height: 450px;*/
+    margin-left: 290px;
+    /*margin-top: 20px;*/
+    padding: 10px;
+    /*box-shadow: 2px 2px 10px #CCC;*/
+    text-align: left;
+    position: relative;
+}
+
+#area_principal > p{
+    padding: 10px;
+}
+
+#aviso{
+    border: 1px Solid #CCC;
+    padding: 10px;
+    background: white;
+    margin-top: 20px;
+    box-shadow: 2px 2px 10px #CCC;
+    text-align: justify;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#tabela{
+    border: 1px Solid #CCC;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+#td-tabela{
+    border: 1px Solid #CCC;
+    padding: 10px;
+}
+
+#tr-tabela{
+    border: 1px Solid #CCC;
+    padding: 10px;
 }

@@ -3,9 +3,7 @@
         <img id="logo_psicologia" src="imagens/psicologia_icone.png" width="40" height="40"/>
         <h3>Mini Exame do Estado Mental</h3>
     </div>
-    
-    
-    <form action="./LoginPsicologoController" method="post"> 
+    <form action="./LoginPsicologoController" method="post"><br><br><br><br><br>
         <center><div id="caixa-login">
                 <div id="caixa-login-titulo"><img src="imagens/chave.png" width="20" height="20"/> Faça seu login</div><br>
                 <br>

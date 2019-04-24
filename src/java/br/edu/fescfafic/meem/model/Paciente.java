@@ -12,15 +12,13 @@ package br.edu.fescfafic.meem.model;
  */
 public class Paciente extends Pessoa {
     
-    private String idade;
+    private Psicologo psicologo;
 
-    public String getIdade() {
-        return idade;
+    public Psicologo getPsicologo() {
+        return psicologo;
     }
 
-    public void setIdade(String idade) {
-        this.idade = idade;
+    public void setPsicologo(Psicologo psicologo) {
+        this.psicologo = psicologo;
     }
-    
-    
 }

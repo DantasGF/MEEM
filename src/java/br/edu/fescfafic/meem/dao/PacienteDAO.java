@@ -7,9 +7,9 @@ package br.edu.fescfafic.meem.dao;
 
 import br.edu.fescfafic.meem.model.Endereco;
 import br.edu.fescfafic.meem.model.Paciente;
+import br.edu.fescfafic.meem.model.Psicologo;
 import br.edu.fescfafic.meem.util.ConnectionFactory;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,54 +29,54 @@ public class PacienteDAO {
     
     public boolean cadastrar(Paciente paciente){
         try {
-            String sql = "INSERT INTO psicologo (nome, sobrenome, rua, bairro,"
-                    + " cidade, estado, sexo, telefone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO paciente (nome, sobrenome, sexo, rua, bairro,"
+                    + " cidade, estado, telefone, id_psicologo)"
+                    + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             
             PreparedStatement stmt = this.connection.prepareStatement(sql);
             stmt.setString(1, paciente.getNome());
             stmt.setString(2, paciente.getSobrenome());
-            stmt.setString(3, paciente.getEndereco().getRua());
-            stmt.setString(4, paciente.getEndereco().getBairro());
-            stmt.setString(5, paciente.getEndereco().getCidade());
-            stmt.setString(6, paciente.getEndereco().getEstado());
-            stmt.setString(7, paciente.getSexo());
+            stmt.setString(3, paciente.getSexo());
+            stmt.setString(4, paciente.getEndereco().getRua());
+            stmt.setString(5, paciente.getEndereco().getBairro());
+            stmt.setString(6, paciente.getEndereco().getCidade());
+            stmt.setString(7, paciente.getEndereco().getEstado());
             stmt.setString(8, paciente.getTelefone());
-            stmt.setDate(9, (Date) paciente.getDataNascimento());
-            stmt.setString(10, paciente.getIdade());
+            stmt.setInt(9, paciente.getPsicologo().getId());
             
             stmt.execute();
             stmt.close();
             return true;
         } catch (SQLException ex) {
-            System.out.println("Problema no PacienteDao: cadastrar = " + ex);
+            System.out.println("Erro:PacienteDAO:cadastrar = " + ex);
         }
         return false;
     }
     
-    public List<Paciente> listar(){
+    public List<Paciente> listar(int id){
         try {
             List<Paciente> pacientes = new ArrayList<>();
-            String sql = "SELECT * FROM psicologo";
+            
+            String sql = "SELECT * FROM paciente WHERE id_psicologo = ? ORDER BY nome ASC";
             PreparedStatement stmt = this.connection.prepareStatement(sql);
+            
+            stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             
             while(rs.next()){
-                Paciente paciente = new Paciente();
-                paciente.setId(rs.getInt("id"));
-                paciente.setNome(rs.getString("nome"));
-                paciente.setSobrenome(rs.getString("sobrenome"));
-                
                 Endereco endereco = new Endereco();
                 endereco.setRua(rs.getString("rua"));
                 endereco.setBairro(rs.getString("bairro"));
                 endereco.setCidade(rs.getString("cidade"));
                 endereco.setEstado(rs.getString("estado"));
                 
+                Paciente paciente = new Paciente();
+                paciente.setId(rs.getInt("id"));
+                paciente.setNome(rs.getString("nome"));
+                paciente.setSobrenome(rs.getString("sobrenome"));
                 paciente.setEndereco(endereco);
-                paciente.setSexo("sexo");
-                paciente.setTelefone("telefone");
-                //paciente.setDataNascimento("dataNascimento);
-                paciente.setIdade("idade");
+                paciente.setSexo(rs.getString("sexo"));
+                paciente.setTelefone(rs.getString("telefone"));
                 
                 pacientes.add(paciente);
             }
@@ -84,7 +84,7 @@ public class PacienteDAO {
             stmt.close();
             return pacientes;
         } catch (SQLException ex) {
-            System.out.println("Erro: PacienteDao: listar = " + ex);
+            System.out.println("Erro:PacienteDAO:listar = " + ex);
         }
         return null;
     }
