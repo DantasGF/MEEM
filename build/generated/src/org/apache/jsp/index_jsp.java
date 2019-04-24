@@ -43,10 +43,6 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
 
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "includes/topo.jsp", out, false);
       out.write("\r\n");
-      out.write("    <div id=\"barra_horizontal_topo\">\r\n");
-      out.write("        <img id=\"logo_psicologia\" src=\"imagens/psicologia_icone.png\" width=\"40\" height=\"40\"/>\r\n");
-      out.write("        <h3>Mini Exame do Estado Mental</h3>\r\n");
-      out.write("    </div>\r\n");
       out.write("    <form action=\"./LoginPsicologoController\" method=\"post\"><br><br><br><br><br>\r\n");
       out.write("        <center><div id=\"caixa-login\">\r\n");
       out.write("                <div id=\"caixa-login-titulo\"><img src=\"imagens/chave.png\" width=\"20\" height=\"20\"/> Faça seu login</div><br>\r\n");

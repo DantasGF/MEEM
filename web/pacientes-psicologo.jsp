@@ -1,10 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="includes/topo.jsp"/>
-<jsp:include page="includes/verifica-sessao.jsp"/>
-        <div id="barra_horizontal_topo">
-            <img id="logo_psicologia" src="imagens/psicologia_icone.png" width="40" height="40"/>
-            <h3>Mini Exame do Estado Mental</h3>
-        </div>
         <div id="barra_lateral_esquerda">
             <ul>
                 <li><a href="area-psicologo.jsp"><img src="imagens/home.png"

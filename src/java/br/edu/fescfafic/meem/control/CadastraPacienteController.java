@@ -27,6 +27,7 @@ public class CadastraPacienteController extends HttpServlet {
         String bairro = request.getParameter("bairro");
         String cidade = request.getParameter("cidade");
         String estado = request.getParameter("estado");
+        String telefone = request.getParameter("telefone");
         
         Endereco endereco = new Endereco();
         endereco.setRua(rua);
@@ -43,6 +44,7 @@ public class CadastraPacienteController extends HttpServlet {
         paciente.setSexo(sexo);
         paciente.setEndereco(endereco);
         paciente.setPsicologo(psicologo);
+        paciente.setTelefone(telefone);
         
         PacienteDAO pacienteDAO = new PacienteDAO();
         pacienteDAO.cadastrar(paciente);

@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 13/04/2019, 14:59:11
-    Author     : Gutemberg
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,3 +8,7 @@
         <link rel="stylesheet" type="text/css" href="css/estilo.css">
     </head>
     <body>
+        <div id="barra_horizontal_topo">
+            <img id="logo_psicologia" src="imagens/psicologia_icone.png" width="40" height="40"/>
+            <h3>Mini Exame do Estado Mental</h3>
+        </div>

@@ -1,9 +1,5 @@
 <jsp:include page="includes/verifica-sessao.jsp"/>
 <jsp:include page="includes/topo.jsp"/>
-    <div id="barra_horizontal_topo">
-        <img id="logo_psicologia" src="imagens/psicologia_icone.png" width="40" height="40"/>
-        <h3>Mini Exame do Estado Mental</h3>
-    </div>
     <div id="barra_lateral_esquerda">
         <ul>
             <li><a href="area-psicologo.jsp"><img src="imagens/home.png"
@@ -77,6 +73,9 @@
                                 <option value="TO">Tocantins</option>
                             </select></center>
                         </td>
+                    </tr>
+                    <tr>
+                        <td><input required="true" id="campo-login" name="telefone" placeholder="(XX) X XXXX-XXXX"></td>
                     </tr>
                     <tr>
                         <td><center><input class="botao-login" type="submit" value="Cadastrar"></center></td>
