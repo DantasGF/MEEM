@@ -33,7 +33,7 @@
                                 ${paciente.endereco.cidade}
                                 - ${paciente.endereco.estado}</td>
                             <td id="td-tabela">${paciente.telefone}</td>
-                            <td id="td-tabela"><a href="./EditaPacienteController?id=${paciente.id}">Editar</a>
+                            <td id="td-tabela"><a href="./EditarPacienteController?id=${paciente.id}">Editar</a>
                                 | <a href="./ExcluirPacienteController?id=${paciente.id}">Excluir</a> 
                                 | <a href="#">Exame</a></td>
                         </tr>

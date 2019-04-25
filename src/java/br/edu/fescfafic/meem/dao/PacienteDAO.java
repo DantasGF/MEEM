@@ -7,7 +7,6 @@ package br.edu.fescfafic.meem.dao;
 
 import br.edu.fescfafic.meem.model.Endereco;
 import br.edu.fescfafic.meem.model.Paciente;
-import br.edu.fescfafic.meem.model.Psicologo;
 import br.edu.fescfafic.meem.util.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -90,10 +89,61 @@ public class PacienteDAO {
         }
         return null;
     }
+    public Paciente recuperarPaciente(int id){
+        try {
+            String sql = "SELECT * FROM paciente WHERE id = ?";
+            PreparedStatement stmt = this.connection.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+                Endereco endereco = new Endereco();
+                endereco.setRua(rs.getString("rua"));
+                endereco.setBairro(rs.getString("bairro"));
+                endereco.setCidade(rs.getString("cidade"));
+                endereco.setEstado(rs.getString("estado"));
+                
+                Paciente paciente = new Paciente();
+                paciente.setId(rs.getInt("id"));
+                paciente.setNome(rs.getString("nome"));
+                paciente.setSobrenome(rs.getString("sobrenome"));
+                paciente.setEndereco(endereco);
+                paciente.setSexo(rs.getString("sexo"));
+                paciente.setTelefone(rs.getString("telefone"));
+                
+                return paciente;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erro:PacienteDAO:recuperarPaciente = " + ex);
+        }
+        return null;
+    }
+    
+    public boolean editar(Paciente paciente) {
+        try {
+            String sql  = "UPDATE paciente SET nome = ?, sobrenome = ?, rua = ?, bairro = ?,"
+                    + " cidade = ?, estado = ?, telefone = ? WHERE id = ?";
+            PreparedStatement stmt  = this.connection.prepareStatement(sql);
+            stmt.setString(1, paciente.getNome());
+            stmt.setString(2, paciente.getSobrenome());
+            stmt.setString(3, paciente.getEndereco().getRua());
+            stmt.setString(4, paciente.getEndereco().getBairro());
+            stmt.setString(5, paciente.getEndereco().getCidade());
+            stmt.setString(6, paciente.getEndereco().getEstado());
+            stmt.setString(7, paciente.getTelefone());
+            stmt.setInt(8, paciente.getId());
+            stmt.executeUpdate();
+            stmt.close();
+            return true;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(PacienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
     
     public boolean excluir(int id){
         try {
-            String sql = "DELET FROM paciente WHERE id = ?";
+            String sql = "DELETE FROM paciente WHERE id = ?";
             PreparedStatement stmt = this.connection.prepareStatement(sql);
             stmt.setInt(1, id);
             stmt.execute();
