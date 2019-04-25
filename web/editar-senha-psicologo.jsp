@@ -29,7 +29,7 @@
         <div id="area_principal">
             <center>
                 <div id="caixa-login">
-                    <div id="caixa-login-titulo">Editar Senha Psicologo</div><br>
+                    <div id="caixa-login-titulo">Alterar Senha Psicologo</div><br>
                 <br>
                 
                 <table border="0">
@@ -37,27 +37,27 @@
                     
                     <tr>
                         <td>
-                            <input required="true" id="campo-login" name="senhaAntiga1" placeholder="Senha Antiga" type="password">
+                            <input required="true" id="campo-login" name="senhaAntiga" placeholder="Atual" type="password">
                         </td>
                     </tr>
                     
                     <tr>
                         <td>
-                            <input required="true" id="campo-login" name="senhaAntiga2" placeholder="Senha Antiga" type="password">
+                            <input required="true" id="campo-login" name="senhaNova1" placeholder="Nova" type="password">
                         </td>
                     </tr>
                     
                     
                     <tr>
                         <td>
-                            <input required="true" id="campo-login" name="senhaNova" placeholder="Nova Senha" type="password">
+                            <input required="true" id="campo-login" name="senhaNova2" placeholder="Digite Novamente" type="password">
                         </td>
                     </tr>
                     
                     <tr>
                         <td>
                             <center>
-                                <input class="botao-login" type="submit" value="Editar">
+                                <input class="botao-login" type="submit" value="Alterar">
                             </center>
                         </td>
                     </tr>
@@ -67,7 +67,7 @@
                 </div>
             </center>
         </div>
-    </form><br>
+    </form>
                         
     </body>
 </html>

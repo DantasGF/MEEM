@@ -24,7 +24,7 @@
             
             <ul>
                 <li>
-                    <a href="editar-senha-psicologo.jsp"> <img src="imagens/senha.png" width="25" height="25"> Editar senha</a>
+                    <a href="editar-senha-psicologo.jsp"> <img src="imagens/senha2.png" width="25" height="25"> Editar Senha</a>
                 </li>
             </ul>
             

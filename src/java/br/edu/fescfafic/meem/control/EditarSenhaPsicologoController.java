@@ -33,27 +33,26 @@ public class EditarSenhaPsicologoController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         int id = Integer.parseInt(request.getParameter("id"));
-        String senhaAntiga1 = request.getParameter("senhaAntiga1");
-        String senhaAntiga2 = request.getParameter("senhaAntiga2");
-        String senhaNova = request.getParameter("senhaNova");
+        String senhaAntiga = request.getParameter("senhaAntiga");
+        String senhaNova1 = request.getParameter("senhaNova1");
+        String senhaNova2 = request.getParameter("senhaNova2");
         
         LoginDAO loginDAO = new LoginDAO();
 
-        if (loginDAO.validarSenha(id, senhaAntiga1) == true) {
-            if (senhaAntiga1.equals(senhaAntiga2)) {
-                loginDAO.alterarSenha(id, senhaNova);
+        if (loginDAO.validarSenha(id, senhaAntiga) == true) {
+            if (senhaNova1.equals(senhaNova2)) {
+                loginDAO.alterarSenha(id, senhaNova1);
                 response.sendRedirect("./area-psicologo.jsp");
             }
             else{
                 String url = "erro-alterar-senha.jsp";
-            response.sendRedirect(url);
+                response.sendRedirect(url);
             }
         }
         else{
             String url = "erro-alterar-senha.jsp";
             response.sendRedirect(url);
-        }
-        
+        }        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
