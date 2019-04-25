@@ -11,26 +11,40 @@
 %>
         <div id="barra_lateral_esquerda">
             <ul>
-                <li><a href="cadastro-paciente.jsp"><img src="imagens/usuario2.png"
-                                    width="25" height="25"> Cadastro Paciente</a></li>
+                <li>
+                    <a href="cadastro-paciente.jsp"> <img src="imagens/usuario2.png" width="25" height="25"> Cadastro Paciente</a>
+                </li>
             </ul>
+            
             <ul>
-                <li><a href="./ListarPacientesController"><img src="imagens/usuarios.png"
-                                    width="25" height="25"> Meus Pacientes</a></li>
+                <li>
+                    <a href="./ListarPacientesController"> <img src="imagens/usuarios.png" width="25" height="25"> Meus Pacientes</a>
+                </li>
             </ul>
+            
             <ul>
-                <li><a href="sair.jsp"><img src="imagens/logout.png"
-                                    width="25" height="25"> Sair</a></li>
+                <li>
+                    <a href="sair.jsp"><img src="imagens/logout.png" width="25" height="25"> Sair</a>
+                </li>
             </ul>
+            
         </div>
-        <center><div id="area_principal">
+        
+        <center>
+            <div id="area_principal">
                 <div id="aviso">
-                    <p>[ ! ] Olá <b>${psicologo.nome}</b>, seja bem-vindo(a) ao nosso sitema.<br><br>
-                        <b>O propósito do nosso trabalho é informatizar o Mini
+                    <p>
+                        [ ! ] Olá <b>${psicologo.nome}</b>, seja bem-vindo(a) ao nosso sitema.
+                        <br><br>
+                        <b>
+                            O propósito do nosso trabalho é informatizar o Mini
                             Exame do Estado Mental para que você, psicólogo(a) 
                             possa ter uma melhor gestão dos testes realizados 
-                            em seus pacientes...<br><br>
-                            [ ! ] Você terá acesso aos seguintes recursos do sistema:<br></b>
+                            em seus pacientes...
+                            <br><br>
+                            [ ! ] Você terá acesso aos seguintes recursos do sistema:
+                            <br>
+                        </b>
                             => Cadastro de pacientes<br>
                             => Gerenciamento de seus pacientes<br>
                             => Realizar exame com o seus pacientes<br>
@@ -38,7 +52,9 @@
                             <br><b>- Aviso do Sistema</b>
                     </p>
                 </div>
-        </div></center>
+            </div>
+        </center>
+                        
     </body>
 </html>
 <% } %>
