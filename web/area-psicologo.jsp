@@ -24,6 +24,12 @@
             
             <ul>
                 <li>
+                    <a href="editar-senha-psicologo.jsp"> <img src="imagens/senha.png" width="25" height="25"> Editar senha</a>
+                </li>
+            </ul>
+            
+            <ul>
+                <li>
                     <a href="sair.jsp"><img src="imagens/logout.png" width="25" height="25"> Sair</a>
                 </li>
             </ul>

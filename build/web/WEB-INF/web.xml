@@ -28,6 +28,10 @@
         <servlet-name>EditarPacienteController</servlet-name>
         <servlet-class>br.edu.fescfafic.meem.control.EditarPacienteController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditarSenhaPsicologoController</servlet-name>
+        <servlet-class>br.edu.fescfafic.meem.control.EditarSenhaPsicologoController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CadastraPsicologoController</servlet-name>
         <url-pattern>/CadastraPsicologoController</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>EditarPacienteController</servlet-name>
         <url-pattern>/EditarPacienteController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditarSenhaPsicologoController</servlet-name>
+        <url-pattern>/EditarSenhaPsicologoController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

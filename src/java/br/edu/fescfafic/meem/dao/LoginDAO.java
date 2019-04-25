@@ -63,32 +63,13 @@ public class LoginDAO {
         return false;
     }
     
-    public int idLogin(String usuario){
+    public boolean validarSenha(int id, String senha){
         try {
-            String sql = "SELECT * FROM psicologo WHERE usuario = ? and senha = ?";
+            String sql = "SELECT * FROM psicologo WHERE id = ? and senha = ?";
             PreparedStatement stmt = this.connection.prepareStatement(sql);
-            stmt.setString(1, usuario);
-            
-            ResultSet rs = stmt.executeQuery();
-            if(rs.next()){
-                rs.close();
-                stmt.close();
-                return rs.getInt("id");
-            }
-            rs.close();
-            stmt.close();
-        } catch (SQLException ex) {
-            System.out.println("Erro:LoginDAO:validar = " + ex);
-        }
-        return 0;
-    }
-    
-    public boolean validarUsuario(String usuario){
-        try {
-            String sql = "SELECT * FROM psicologo WHERE usuario = ?";
-            PreparedStatement stmt = this.connection.prepareStatement(sql);
-            stmt.setString(1, usuario);
-            
+            stmt.setInt(1, id);
+            stmt.setString(2, senha);
+
             ResultSet rs = stmt.executeQuery();
             if(rs.next()){
                 rs.close();
