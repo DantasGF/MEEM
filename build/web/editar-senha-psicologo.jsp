@@ -1,7 +1,6 @@
 <%@page import="br.edu.fescfafic.meem.model.Psicologo"%>
 <jsp:include page="includes/topo.jsp"/>
 <% 
-    HttpSession sessao = request.getSession();
     Psicologo psicologo = (Psicologo) session.getAttribute("psicologo");
     
     if(psicologo == null){
@@ -37,20 +36,20 @@
                     
                     <tr>
                         <td>
-                            <input required="true" id="campo-login" name="senhaAntiga" placeholder=" Senha Atual" type="password">
+                            <input required="true" id="campo-login" name="senhaAntiga" placeholder="Senha atual" type="password">
                         </td>
                     </tr>
                     
                     <tr>
                         <td>
-                            <input required="true" id="campo-login" name="senhaNova1" placeholder="Nova Senha" type="password">
+                            <input required="true" id="campo-login" name="senhaNova1" placeholder="Nova senha" type="password">
                         </td>
                     </tr>
                     
                     
                     <tr>
                         <td>
-                            <input required="true" id="campo-login" name="senhaNova2" placeholder="Digite Novamente" type="password">
+                            <input required="true" id="campo-login" name="senhaNova2" placeholder="Repita a nova senha" type="password">
                         </td>
                     </tr>
                     

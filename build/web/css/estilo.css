@@ -89,20 +89,33 @@ img{
     position: absolute;
 }
 
-#barra_lateral_esquerda > ul{
-    border-bottom: 0.1px Solid #444;
+#barra_lateral_esquerda, li > a{
+    color: #B8B8B8;
 }
 
-ul, li{
+#barra_lateral_esquerda > ul{
+    border-bottom: 0.1px Solid #444;
     list-style: none;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    vertical-align: middle;
+}
+
+barra_lateral_esquerda > li{
+    list-style: none;
+    padding-left: 10px;
 }
 
 ul, li > a{
     text-decoration: none;
     vertical-align: middle;
-    color: #B8B8B8;
-    padding-left: 10px;
-    padding-bottom: 15px;
+    /*color: #B8B8B8;*/
+    /*padding-left: 10px;*/
+    /*padding-bottom: 15px;*/
+}
+
+ul, li{
+    list-style: none;
 }
 
 #area_principal{

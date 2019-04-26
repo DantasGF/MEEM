@@ -1,6 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="br.edu.fescfafic.meem.model.Psicologo"%>
 <jsp:include page="includes/topo.jsp"/>
-
+<% 
+    Psicologo psicologo = (Psicologo) session.getAttribute("psicologo");
+    
+    if(psicologo == null){
+        response.sendRedirect("./index.jsp");
+    }
+    else{
+%>
         <div id="barra_lateral_esquerda">
             <ul>
                 <li>
@@ -19,7 +27,6 @@
                     <a href="sair.jsp"><img src="imagens/logout.png" width="25" height="25"> Sair</a>
                 </li>
             </ul>
-            
         </div>
 
         <center>
@@ -53,7 +60,7 @@
                                 <td id="td-tabela">
                                     <a href="./EditarPacienteController?id=${paciente.id}"><img width="30" height="30" src="imagens/editar-paciente.png"/></a>
                                     | <a href="./ExcluirPacienteController?id=${paciente.id}"><img width="30" height="30" src="imagens/remover-paciente.png"/></a> 
-                                    | <a href="#"><img width="30" height="30" src="imagens/exame.png"/></a>
+                                    | <a href="exame.jsp?nome=${paciente.nome} ${paciente.sobrenome}&sexo=${paciente.sexo}"><img width="30" height="30" src="imagens/exame.png"/></a>
                                 </td>
                                 
                             </tr>
@@ -68,3 +75,6 @@
         </center>
     </body>
 </html>
+<%
+    }
+%>

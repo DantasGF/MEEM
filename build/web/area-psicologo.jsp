@@ -1,7 +1,6 @@
 <%@page import="br.edu.fescfafic.meem.model.Psicologo"%>
 <jsp:include page="includes/topo.jsp"/>
 <% 
-    HttpSession sessao = request.getSession();
     Psicologo psicologo = (Psicologo) session.getAttribute("psicologo");
     
     if(psicologo == null){
