@@ -24,6 +24,7 @@
 
         <center>
             <div id="area_principal">
+                <h1>Meus Pacientes</h1>
                 <div id="aviso">
                     <center>
                         <table id="tabela" border="0">
@@ -39,8 +40,8 @@
                             <c:forEach items="${pacientes}" var="paciente">
                                 
                                 <td id="td-tabela">${paciente.nome} ${paciente.sobrenome}</td>
-                                
-                                <td id="td-tabela">${paciente.sexo}</td>
+                            
+                                <td id="td-tabela"><center>${paciente.sexo}</center></td>
                                 
                                 <td id="td-tabela">R. ${paciente.endereco.rua}, 
                                     Bairro ${paciente.endereco.bairro},
@@ -49,9 +50,10 @@
                                 
                                 <td id="td-tabela">${paciente.telefone}</td>
                                 
-                                <td id="td-tabela"><a href="./EditarPacienteController?id=${paciente.id}">Editar</a>
-                                    | <a href="./ExcluirPacienteController?id=${paciente.id}">Excluir</a> 
-                                    | <a href="#">Exame</a>
+                                <td id="td-tabela">
+                                    <a href="./EditarPacienteController?id=${paciente.id}"><img width="30" height="30" src="imagens/editar-paciente.png"/></a>
+                                    | <a href="./ExcluirPacienteController?id=${paciente.id}"><img width="30" height="30" src="imagens/remover-paciente.png"/></a> 
+                                    | <a href="#"><img width="30" height="30" src="imagens/exame.png"/></a>
                                 </td>
                                 
                             </tr>

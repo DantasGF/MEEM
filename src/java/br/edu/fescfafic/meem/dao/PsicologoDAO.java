@@ -113,6 +113,9 @@ public class PsicologoDAO {
                 endereco.setBairro(rs.getString("bairro"));
                 endereco.setCidade(rs.getString("cidade"));
                 endereco.setEstado(rs.getString("estado"));
+                
+                psicologo.setLogin(login);
+                
                 psicologo.setEndereco(endereco);
                 
                 return psicologo;

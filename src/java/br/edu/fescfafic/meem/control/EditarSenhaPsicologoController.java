@@ -6,12 +6,14 @@
 package br.edu.fescfafic.meem.control;
 
 import br.edu.fescfafic.meem.dao.LoginDAO;
+import br.edu.fescfafic.meem.model.Psicologo;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -37,9 +39,11 @@ public class EditarSenhaPsicologoController extends HttpServlet {
         String senhaNova1 = request.getParameter("senhaNova1");
         String senhaNova2 = request.getParameter("senhaNova2");
         
+        Psicologo psicologo = (Psicologo) request.getSession().getAttribute("psicologo");
+        
         LoginDAO loginDAO = new LoginDAO();
 
-        if (loginDAO.validarSenha(id, senhaAntiga) == true) {
+        if (psicologo.getLogin().getSenha().equals(senhaAntiga)) {
             if (senhaNova1.equals(senhaNova2)) {
                 loginDAO.alterarSenha(id, senhaNova1);
                 response.sendRedirect("./area-psicologo.jsp");

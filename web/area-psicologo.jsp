@@ -38,6 +38,7 @@
         
         <center>
             <div id="area_principal">
+                <h1>Área do Psicólogo</h1>
                 <div id="aviso">
                     <p>
                         [ ! ] Olá <b>${psicologo.nome}</b>, seja bem-vindo(a) ao nosso sitema.

@@ -37,13 +37,13 @@
                     
                     <tr>
                         <td>
-                            <input required="true" id="campo-login" name="senhaAntiga" placeholder="Atual" type="password">
+                            <input required="true" id="campo-login" name="senhaAntiga" placeholder=" Senha Atual" type="password">
                         </td>
                     </tr>
                     
                     <tr>
                         <td>
-                            <input required="true" id="campo-login" name="senhaNova1" placeholder="Nova" type="password">
+                            <input required="true" id="campo-login" name="senhaNova1" placeholder="Nova Senha" type="password">
                         </td>
                     </tr>
                     

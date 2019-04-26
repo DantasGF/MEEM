@@ -62,25 +62,4 @@ public class LoginDAO {
         }
         return false;
     }
-    
-    public boolean validarSenha(int id, String senha){
-        try {
-            String sql = "SELECT * FROM psicologo WHERE id = ? and senha = ?";
-            PreparedStatement stmt = this.connection.prepareStatement(sql);
-            stmt.setInt(1, id);
-            stmt.setString(2, senha);
-
-            ResultSet rs = stmt.executeQuery();
-            if(rs.next()){
-                rs.close();
-                stmt.close();
-                return true;
-            }
-            rs.close();
-            stmt.close();
-        } catch (SQLException ex) {
-            System.out.println("Erro:LoginDAO:validar = " + ex);
-        }
-        return false;
-    }
 }
