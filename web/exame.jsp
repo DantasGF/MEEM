@@ -32,119 +32,250 @@
             <div id="area_principal">
                 <h1>Exame</h1>
                 <div id="aviso">
-                    <ul>
-                        <li>
-                            Nome do paciente: <b><%= request.getParameter("nome") %></b>
-                        </li><br>
-                        
-                        <li>
-                            Sexo: <b><%= request.getParameter("sexo") %></b>
-                        </li><br>
-                        
-                        <li>
-                            Data da avaliação: <b>dd/mm/aaaa</b> 
-                        </li><br>
-                        
-                        <li>
-                            Avaliador(a): <b>${psicologo.nome} ${psicologo.sobrenome}</b>
-                        </li><br>
-                        
-                        <li>
-                            <h3>Orientação Temporal Espacial</h3>
-                        </li>
+                    <form action="" method="post">
                         <ul>
+                            <!--<li>
+                                Nome do paciente: <b><%= request.getParameter("nome") %></b>
+                            </li><br>
+
                             <li>
-                                <h4>Tempo<h4>
+                                Sexo: <b><%= request.getParameter("sexo") %></b>
+                            </li><br>
+
+                            <li>
+                                Data da avaliação: <b>dd/mm/aaaa</b> 
+                            </li><br>
+
+                            <li>
+                                Avaliador(a): <b>${psicologo.nome} ${psicologo.sobrenome}</b>
+                            </li><br>-->
+
+                            <li>
+                                <h3>
+                                    1 - Orientação Temporal (0 - 5 pontos)
+                                </h3>
                             </li>
                             <ul>
-                                <li>
-                                    Qual é o dia da semana?
-                                </li>
-                                
-                                <li>
-                                    <input name="" type="checkbox"> Acertou<br>
-                                    <input name="" type="checkbox"> Errou
-                                </li><br>
-                                
-                                <li>
-                                    Qual é o dia do mês?
-                                </li>
-                                
-                                <li>
-                                    <input name="" type="checkbox"> Acertou<br>
-                                    <input name="" type="checkbox"> Errou
-                                </li><br>
-                                
-                                <li>
-                                    Em que mês estamos?
-                                </li>
-                                
-                                <li>
-                                    <input name="" type="checkbox"> Acertou<br>
-                                    <input name="" type="checkbox"> Errou
-                                </li><br>
-                                
-                                <li>
-                                    Em que ano estamos?
-                                </li>
-                                
-                                <li>
-                                    <input name="" type="checkbox"> Acertou<br>
-                                    <input name="" type="checkbox"> Errou
-                                </li><br>
+                                <input type="checkbox">Qual é o dia da semana?<br>
+                                <br>
+                                    <input type="checkbox">Qual é o dia do mês?
+                                <br>
+                                <br>
+                                    <input type="checkbox">Qual o mês atual?
+                                <br>
+                                <br>
+                                    <input type="checkbox">Qual o ano atual?
+                                <br>
+                                <br>
+                                    <input type="checkbox">Hora aproximada?
+                                <br>
                             </ul>
-                            
+
                             <li>
-                                <h4>Espaço<h4>
+                                <h3>
+                                    2 - Orientação Espacial (0 - 5 pontos)
+                                </h3>
                             </li>
                             <ul>
-                                <li>
-                                    Em qual local estamos?
-                                </li>
-                                
-                                <li>
-                                    <input name="" type="checkbox"> Acertou<br>
-                                    <input name="" type="checkbox"> Errou
-                                </li><br>
-                                
-                                <li>
-                                    Qual instituição estamos(casa, rua)?
-                                </li>
-                                
-                                <li>
-                                    <input name="" type="checkbox"> Acertou<br>
-                                    <input name="" type="checkbox"> Errou
-                                </li><br>
-                                
-                                <li>
-                                    Em qual bairro estamos?
-                                </li>
-                                
-                                <li>
-                                    <input name="" type="checkbox"> Acertou<br>
-                                    <input name="" type="checkbox"> Errou
-                                </li><br>
-                                
-                                <li>
-                                    Em que cidade estamos?
-                                </li>
-                                
-                                <li>
-                                    <input name="" type="checkbox"> Acertou<br>
-                                    <input name="" type="checkbox"> Errou
-                                </li><br>
-                                
-                                <li>
-                                    Estamos em qual estado?
-                                </li>
-                                
-                                <li>
-                                    <input name="" type="checkbox"> Acertou<br>
-                                    <input name="" type="checkbox"> Errou
-                                </li><br>
+                                <input type="checkbox">Em qual local estamos?<br>
+                                <br>
+                                    <input type="checkbox">Em qual instituição estamos(casa, rua...)?
+                                <br>
+                                <br>
+                                    <input type="checkbox">Em qual bairro estamos?
+                                <br>
+                                <br>
+                                    <input type="checkbox">Estamos em qual cidade?
+                                <br>
+                                <br>
+                                    <input type="checkbox">Estamos em qual estado?
+                                <br>
+                            </ul>
+
+                            <li>
+                                <h3>
+                                    3 - Registros (0 - 3 pontos)
+                                </h3>
+                            </li>
+                            <ul>
+                                <p>
+                                    <b>
+                                        <b style="color:red;">[ ! ]</b> Mencione três palavras levando um segundo para cada uma.
+                                        Peça ao paciente para repetir as três palavras que você mencionou.
+                                        Estabeleça um ponto para cada resposta correta. 
+                                    </b>
+                                </p>
+                                <input type="checkbox">Vaso<br>
+                                <br>
+                                    <input type="checkbox">Carro
+                                <br>
+                                <br>
+                                    <input type="checkbox">Tijolo
+                                <br>
+                            </ul>
+
+                            <li>
+                                <h3>
+                                    4 - Atenção (0 - 5 pontos)
+                                </h3>
+                            </li>
+                            <ul>
+                                <p>
+                                    <b>
+                                        <b style="color:red;">[ ! ]</b> Pedir a o paciênte para
+                                        soletar a palavra MUNDO de trás para frente. 
+                                    </b>
+                                </p>
+                                <input type="checkbox">O<br>
+                                <br>
+                                    <input type="checkbox">D
+                                <br>
+                                <br>
+                                    <input type="checkbox">N
+                                <br>
+                                <br>
+                                    <input type="checkbox">U
+                                <br>
+                                <br>
+                                    <input type="checkbox">M
+                                <br>
+                            </ul>
+
+                            <li>
+                                <h3>
+                                    5 - Lembranças - Memória de Evocação (0 - 3 pontos)
+                                </h3>
+                            </li>
+                            <ul>
+                                <p>
+                                    <b>
+                                        <b style="color:red;">[ ! ]</b> Pergunte o nome das três palavras mencionadas na questão 
+                                        <b style="color:red;">3</b>. Estabeleça um ponto para cada resposta.
+                                        correta. 
+                                    </b>
+                                </p>
+                                <input type="checkbox">Vaso<br>
+                                <br>
+                                    <input type="checkbox">Carro
+                                <br>
+                                <br>
+                                    <input type="checkbox">Tijolo
+                                <br>
+                            </ul>
+
+                            <li>
+                                <h3>
+                                    6 - Linguagem (0 - 2 pontos)
+                                </h3>
+                            </li>
+                            <ul>
+                                <p>
+                                    <b>
+                                        <b style="color:red;">[ ! ]</b> Aponte para um lápis e um relógio.
+                                        Faça o paciente dizer o nome desses objetos conforme você os aponta.
+                                    </b>
+                                </p>
+                                <input type="checkbox">Lápis<br>
+
+                                <br>
+                                    <input type="checkbox">Relógio
+                                <br>
+                            </ul>
+
+                            <li>
+                                <h3>
+                                    7 - Linguagem (0 - 1 ponto)
+                                </h3>
+                            </li>
+                            <ul>
+                                <p>
+                                    <b>
+                                        <b style="color:red;">[ ! ]</b> Faça o paciente. Repetir "Nem aqui, nem ali, nem lá"
+                                    </b>
+                                </p>
+                                <input type="checkbox">Nem aqui, nem alí, nem lá<br>
+                            </ul>
+
+                            <li>
+                                <h3>
+                                    8 - Linguagem (0 - 3 pontos)
+                                </h3>
+                            </li>
+                            <ul>
+                                <p>
+                                    <b>
+                                        <b style="color:red;">[ ! ]</b> Faça o paciente seguir o comando de três estágios.
+                                        "Pegue o papel com a mão direita. Dobre o papel ao
+                                        meio. Coloque o papel na mesa".
+                                    </b>
+                                </p>
+                                <input type="checkbox">Pegar o papel com a mão direita<br>
+                                <br>
+                                    <input type="checkbox">Dobrar o papel ao meio
+                                <br>
+                                <br>
+                                    <input type="checkbox">Colocar o papel na mesa
+                                <br>
+                            </ul>
+
+                            <li>
+                                <h3>
+                                    9 - Linguagem (0 - 1 ponto)
+                                </h3>
+                            </li>
+                            <ul>
+                                <p>
+                                    <b>
+                                        <b style="color:red;">[ ! ]</b> Faça o paciente ler e obedecer ao seguinte: FECHE OS OLHOS. 
+                                    </b>
+                                </p>
+                                <input type="checkbox">Obedeceu ao comando<br>
+                            </ul>
+
+                            <li>
+                                <h3>
+                                    10 - Linguagem (0 - 1 ponto)
+                                </h3>
+                            </li>
+                            <ul>
+                                <p>
+                                    <b>
+                                        <b style="color:red;">[ ! ]</b> Faça o paciente escrever uma frase de sua
+                                        própria autoria. A frase deve conter um sujeito e um
+                                        objeto e fazer sentido.
+                                        <b style="color:red;">(Ignore erros de ortografia ao marcar o ponto)</b>
+                                    </b>
+                                </p>
+                                <input type="checkbox">O paciente conseguiu escrever a frase com sucesso<br>
+                            </ul>
+
+                            <li>
+                                <h3>
+                                    11 - Linguagem (0 - 1 ponto)
+                                </h3>
+                            </li>
+                            <ul>
+                                <p>
+                                    <b>
+                                        <b style="color:red;">[ ! ]</b> Copie o desenho abaixo.
+                                        Estabeleça um ponto se todos os lados e
+                                        ângulos forem preservados e se os lados da interseção
+                                        formarem um quadrilátero.
+                                    </b>
+                                <center>
+                                    <img src="imagens/11.jpg"/>
+                                </center>
+                                </p>
+                                <input type="checkbox">O paciente realizou a tarefa com sucesso<br>
                             </ul>
                         </ul>
-                    </ul>
+                        <br>
+                            <center>
+                                <input type="submit" value="Finalizar Exame">
+                                <input type="reset" value="Limpar opções">
+                            </center>
+                        <br>
+                    </form>
                 </div>
             </div>
         </center>
