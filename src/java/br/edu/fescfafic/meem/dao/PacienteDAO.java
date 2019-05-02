@@ -54,14 +54,17 @@ public class PacienteDAO {
         return false;
     }
     
-    public List<Paciente> listar(int id){
+    public List<Paciente> listar(int id, int limite, int offset){
         try {
             List<Paciente> pacientes = new ArrayList<>();
             
-            String sql = "SELECT * FROM paciente WHERE id_psicologo = ? ORDER BY nome ASC";
+            String sql = "SELECT * FROM paciente WHERE id_psicologo = ? ORDER BY nome ASC LIMIT ? OFFSET ?";
+            //SELECT id, nome FROM clientes ORDER BY id DESC LIMIT 15 OFFSET ?
             PreparedStatement stmt = this.connection.prepareStatement(sql);
             
             stmt.setInt(1, id);
+            stmt.setInt(2, limite);
+            stmt.setInt(3, offset);
             ResultSet rs = stmt.executeQuery();
             
             while(rs.next()){
@@ -154,4 +157,26 @@ public class PacienteDAO {
         }
         return false;
     }
+    
+    public int numPaciente(int id){
+        int num = 0;
+        try {
+            String sql = "SELECT COUNT(*) as numeroPacientes FROM paciente "
+                    + "WHERE id_psicologo = ? ";
+            PreparedStatement stmt = this.connection.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            
+            if(rs.next()){
+                return num = rs.getInt("numeroPacientes");
+            }
+            stmt.execute();
+            stmt.close();
+            return num;
+        } catch (SQLException ex) {
+            System.out.println("Erro:PacienteDAO:numPaciente = " + ex);
+        }
+        return num;
+    }
+    
 }

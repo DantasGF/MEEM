@@ -1,14 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="br.edu.fescfafic.meem.model.Psicologo"%>
 <jsp:include page="includes/topo.jsp"/>
-<% 
-    Psicologo psicologo = (Psicologo) session.getAttribute("psicologo");
-    
-    if(psicologo == null){
-        response.sendRedirect("./index.jsp");
-    }
-    else{
-%>
+    <% 
+        Psicologo psicologo = (Psicologo) session.getAttribute("psicologo");
+
+        if(psicologo == null){
+            response.sendRedirect("./index.jsp");
+        }
+        else{
+    %>
         <div id="barra_lateral_esquerda">
             <ul>
                 <li>
@@ -67,14 +67,21 @@
                             </c:forEach>
                             
                         </table>
-                    </center>
+
+                    <br>  
                     
+                    <%
+                        int totalPagina = (int)request.getSession().getAttribute("totalPagina");
+                        for (int i = 1; i <= totalPagina; i++) {
+                                out.println("<a href=./ListarPacientesController?paginacao=" + i + ">" + i + "</a>");
+                        }
+                    %>
+                    
+                    </center>
                 </div>
                 
             </div>
         </center>
-    </body>
+</body>
 </html>
-<%
-    }
-%>
+ <% } %>

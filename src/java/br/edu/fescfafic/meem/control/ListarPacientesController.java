@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -22,8 +23,28 @@ public class ListarPacientesController extends HttpServlet {
             throws ServletException, IOException {
         Psicologo psicologo = (Psicologo)request.getSession().getAttribute("psicologo");
         
-        List<Paciente> pacientes = new PacienteDAO().listar(psicologo.getId());
+        int limite = 5;
+        int totalPacientes = new PacienteDAO().numPaciente(psicologo.getId());
+        int totalPagina = totalPacientes / limite;
+        if (totalPacientes % limite != 0) {
+            totalPagina++;
+        }
+        
+        String numeroPagina = request.getParameter("paginacao");
 
+        int offset;
+        if (numeroPagina != null) {
+            offset = (Integer.parseInt(numeroPagina) * limite) - limite;
+        }
+        else{
+            offset= 0;
+        }
+        
+        List<Paciente> pacientes = new PacienteDAO().listar(psicologo.getId(),limite, offset);
+                
+        HttpSession sessao = request.getSession();
+            sessao.setAttribute("totalPagina", totalPagina);
+            
         request.setAttribute("pacientes", pacientes);
         request.getRequestDispatcher("./pacientes-psicologo.jsp")
                 .forward(request, response);

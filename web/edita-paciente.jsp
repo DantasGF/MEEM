@@ -1,13 +1,13 @@
 <%@page import="br.edu.fescfafic.meem.model.Psicologo"%>
 <jsp:include page="includes/topo.jsp"/>
-<% 
-    Psicologo psicologo = (Psicologo) session.getAttribute("psicologo");
-    
-    if(psicologo == null){
-        response.sendRedirect("./index.jsp");
-    }
-    else{
-%>
+    <% 
+        Psicologo psicologo = (Psicologo) session.getAttribute("psicologo");
+
+        if(psicologo == null){
+            response.sendRedirect("./index.jsp");
+        }
+        else{
+    %>
     <div id="barra_lateral_esquerda">
             <ul>
                 <li>
@@ -125,8 +125,6 @@
         </div>
     </form><br>
     
-    </body>
+</body>
 </html>
-<%
-    }
-%>
+    <% } %>

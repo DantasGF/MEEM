@@ -58,7 +58,7 @@ public class LoginDAO {
             
             return true;
         } catch (SQLException ex) {
-            System.err.println("Erro: " + ex);
+            System.err.println("Erro: AlterarSenha =" + ex);
         }
         return false;
     }

@@ -161,3 +161,7 @@ ul, li{
     border: 1px Solid #CCC;
     padding: 10px;
 }
+
+#paginacao{
+    text-align: left;
+}

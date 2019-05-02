@@ -6,5 +6,5 @@
         Clique <a href="area-psicologo.jsp"><b>aqui</b></a> para ir a página principal!
         
     </center>
-    </body>
+</body>
 </html>

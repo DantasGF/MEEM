@@ -5,5 +5,5 @@
         Clique <a href="index.jsp"><b>aqui</b></a> para ir a página de login!
         
     </center>
-    </body>
+</body>
 </html>
