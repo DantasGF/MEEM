@@ -32,42 +32,26 @@
             <div id="area_principal">
                 <h1>Exame</h1>
                 <div id="aviso">
-                    <form action="" method="post">
+                    <form action="./CadastrarExameController" method="post">
                         <ul>
-                            <!--<li>
-                                Nome do paciente: <b><%= request.getParameter("nome") %></b>
-                            </li><br>
-
-                            <li>
-                                Sexo: <b><%= request.getParameter("sexo") %></b>
-                            </li><br>
-
-                            <li>
-                                Data da avaliação: <b>dd/mm/aaaa</b> 
-                            </li><br>
-
-                            <li>
-                                Avaliador(a): <b>${psicologo.nome} ${psicologo.sobrenome}</b>
-                            </li><br>-->
-
                             <li>
                                 <h3>
                                     1 - Orientação Temporal (0 - 5 pontos)
                                 </h3>
                             </li>
                             <ul>
-                                <input type="checkbox">Qual é o dia da semana?<br>
+                                <input name="q1a" value="1" type="checkbox">Qual é o dia da semana?<br>
                                 <br>
-                                    <input type="checkbox">Qual é o dia do mês?
-                                <br>
-                                <br>
-                                    <input type="checkbox">Qual o mês atual?
+                                    <input name="q1b" value="1" type="checkbox">Qual é o dia do mês?
                                 <br>
                                 <br>
-                                    <input type="checkbox">Qual o ano atual?
+                                    <input name="q1c" value="1" type="checkbox">Qual o mês atual?
                                 <br>
                                 <br>
-                                    <input type="checkbox">Hora aproximada?
+                                    <input name="q1d" value="1" type="checkbox">Qual o ano atual?
+                                <br>
+                                <br>
+                                    <input name="q1e" value="1" type="checkbox">Hora aproximada?
                                 <br>
                             </ul>
 
@@ -77,18 +61,18 @@
                                 </h3>
                             </li>
                             <ul>
-                                <input type="checkbox">Em qual local estamos?<br>
+                                <input name="q2a" value="1"  type="checkbox">Em qual local estamos?<br>
                                 <br>
-                                    <input type="checkbox">Em qual instituição estamos(casa, rua...)?
-                                <br>
-                                <br>
-                                    <input type="checkbox">Em qual bairro estamos?
+                                    <input name="q2b" value="1"  type="checkbox">Em qual instituição estamos(casa, rua...)?
                                 <br>
                                 <br>
-                                    <input type="checkbox">Estamos em qual cidade?
+                                    <input name="q2c" value="1"  type="checkbox">Em qual bairro estamos?
                                 <br>
                                 <br>
-                                    <input type="checkbox">Estamos em qual estado?
+                                    <input name="q2d" value="1"  type="checkbox">Estamos em qual cidade?
+                                <br>
+                                <br>
+                                    <input name="q2e" value="1"  type="checkbox">Estamos em qual estado?
                                 <br>
                             </ul>
 
@@ -105,12 +89,12 @@
                                         Estabeleça um ponto para cada resposta correta. 
                                     </b>
                                 </p>
-                                <input type="checkbox">Vaso<br>
+                                <input name="q3a" value="1"  type="checkbox">Vaso<br>
                                 <br>
-                                    <input type="checkbox">Carro
+                                    <input name="q3b" value="1"  type="checkbox">Carro
                                 <br>
                                 <br>
-                                    <input type="checkbox">Tijolo
+                                    <input name="q3c" value="1"  type="checkbox">Tijolo
                                 <br>
                             </ul>
 
@@ -126,18 +110,18 @@
                                         soletar a palavra MUNDO de trás para frente. 
                                     </b>
                                 </p>
-                                <input type="checkbox">O<br>
+                                <input name="q4a" value="1"  type="checkbox">O<br>
                                 <br>
-                                    <input type="checkbox">D
-                                <br>
-                                <br>
-                                    <input type="checkbox">N
+                                    <input name="q4b" value="1"  type="checkbox">D
                                 <br>
                                 <br>
-                                    <input type="checkbox">U
+                                    <input name="q4c" value="1"  type="checkbox">N
                                 <br>
                                 <br>
-                                    <input type="checkbox">M
+                                    <input name="q4d" value="1"  type="checkbox">U
+                                <br>
+                                <br>
+                                    <input name="q4e" value="1"  type="checkbox">M
                                 <br>
                             </ul>
 
@@ -154,12 +138,12 @@
                                         correta. 
                                     </b>
                                 </p>
-                                <input type="checkbox">Vaso<br>
+                                <input name="q5a" value="1"  type="checkbox">Vaso<br>
                                 <br>
-                                    <input type="checkbox">Carro
+                                    <input name="q5b" value="1"  type="checkbox">Carro
                                 <br>
                                 <br>
-                                    <input type="checkbox">Tijolo
+                                    <input name="q5c" value="1"  type="checkbox">Tijolo
                                 <br>
                             </ul>
 
@@ -175,10 +159,10 @@
                                         Faça o paciente dizer o nome desses objetos conforme você os aponta.
                                     </b>
                                 </p>
-                                <input type="checkbox">Lápis<br>
+                                <input name="q6a" value="1"  type="checkbox">Lápis<br>
 
                                 <br>
-                                    <input type="checkbox">Relógio
+                                    <input name="q6b" value="1"  type="checkbox">Relógio
                                 <br>
                             </ul>
 
@@ -193,7 +177,7 @@
                                         <b style="color:red;">[ ! ]</b> Faça o paciente. Repetir "Nem aqui, nem ali, nem lá"
                                     </b>
                                 </p>
-                                <input type="checkbox">Nem aqui, nem alí, nem lá<br>
+                                <input name="q7a" value="1"  type="checkbox">Nem aqui, nem alí, nem lá<br>
                             </ul>
 
                             <li>
@@ -209,12 +193,12 @@
                                         meio. Coloque o papel na mesa".
                                     </b>
                                 </p>
-                                <input type="checkbox">Pegar o papel com a mão direita<br>
+                                <input name="q8a" value="1"  type="checkbox">Pegar o papel com a mão direita<br>
                                 <br>
-                                    <input type="checkbox">Dobrar o papel ao meio
+                                    <input name="q8b" value="1"  type="checkbox">Dobrar o papel ao meio
                                 <br>
                                 <br>
-                                    <input type="checkbox">Colocar o papel na mesa
+                                    <input name="q8c" value="1"  type="checkbox">Colocar o papel na mesa
                                 <br>
                             </ul>
 
@@ -229,7 +213,7 @@
                                         <b style="color:red;">[ ! ]</b> Faça o paciente ler e obedecer ao seguinte: FECHE OS OLHOS. 
                                     </b>
                                 </p>
-                                <input type="checkbox">Obedeceu ao comando<br>
+                                <input name="q9a" value="1"  type="checkbox">Obedeceu ao comando<br>
                             </ul>
 
                             <li>
@@ -246,7 +230,7 @@
                                         <b style="color:red;">(Ignore erros de ortografia ao marcar o ponto)</b>
                                     </b>
                                 </p>
-                                <input type="checkbox">O paciente conseguiu escrever a frase com sucesso<br>
+                                <input name="q10a" value="1"  type="checkbox">O paciente conseguiu escrever a frase com sucesso<br>
                             </ul>
 
                             <li>
@@ -266,7 +250,7 @@
                                     <img src="imagens/11.jpg"/>
                                 </center>
                                 </p>
-                                <input type="checkbox">O paciente realizou a tarefa com sucesso<br>
+                                <input name="q11a" value="1"  type="checkbox">O paciente realizou a tarefa com sucesso<br>
                             </ul>
                         </ul>
                         <br>

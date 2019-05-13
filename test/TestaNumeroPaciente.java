@@ -1,4 +1,5 @@
 
+import br.edu.fescfafic.meem.dao.ExameDAO;
 import br.edu.fescfafic.meem.dao.PacienteDAO;
 import br.edu.fescfafic.meem.dao.PsicologoDAO;
 import br.edu.fescfafic.meem.model.Psicologo;
@@ -19,8 +20,11 @@ public class TestaNumeroPaciente {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        PacienteDAO pDAO = new PacienteDAO();
-        System.out.println(pDAO.numPaciente(6));
+        //PacienteDAO pDAO = new PacienteDAO();
+        //System.out.println(pDAO.numPaciente(6));
+        
+        ExameDAO eDAO = new ExameDAO();
+        System.out.println("Pontuação do 1° exame: " + eDAO.pountuacao(1));
     }
     
 }

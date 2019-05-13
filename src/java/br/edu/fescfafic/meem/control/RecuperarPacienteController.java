@@ -1,59 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.edu.fescfafic.meem.control;
 
-import br.edu.fescfafic.meem.dao.LoginDAO;
-import br.edu.fescfafic.meem.dao.PsicologoDAO;
-import br.edu.fescfafic.meem.model.Login;
+import br.edu.fescfafic.meem.dao.PacienteDAO;
+import br.edu.fescfafic.meem.model.Paciente;
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author COMPUTER
+ * @author Gutemberg
  */
-public class LoginPsicologoController extends HttpServlet {
+public class RecuperarPacienteController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        String usuario = request.getParameter("usuario");
-        String senha = request.getParameter("senha");
+        int id = Integer.parseInt(request.getParameter("id"));
         
-        Login login = new Login();
-        login.setUsuario(usuario);
-        login.setSenha(senha);
+        Paciente paciente = new PacienteDAO().recuperarPaciente(id);
         
-        LoginDAO loginDAO = new LoginDAO();
-        if (loginDAO.validar(login)){
-            HttpSession sessao = request.getSession();
-            sessao.setMaxInactiveInterval(3999999);
-            sessao.setAttribute("psicologo", new PsicologoDAO()
-                    .buscarPsicologoLogin(login));
-            response.sendRedirect("./area-psicologo.jsp");
-        }
-        else{
-            String url = "erro-login.jsp";
-            response.sendRedirect(url);
-        }
+        request.setAttribute("paciente", paciente);
+        request.getRequestDispatcher("./exames-paciente.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

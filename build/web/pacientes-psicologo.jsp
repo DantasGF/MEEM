@@ -32,7 +32,7 @@
         <center>
             <div id="area_principal">
                 <h1>Meus Pacientes</h1>
-                <div id="aviso">
+                <div id="aviso"><br>
                     <center>
                         <table id="tabela" border="0">
                             <tr id="tr-tabela">
@@ -58,9 +58,9 @@
                                 <td id="td-tabela">${paciente.telefone}</td>
                                 
                                 <td id="td-tabela">
-                                    <a href="./EditarPacienteController?id=${paciente.id}"><img width="30" height="30" src="imagens/editar-paciente.png"/></a>
-                                    | <a href="./ExcluirPacienteController?id=${paciente.id}"><img width="30" height="30" src="imagens/remover-paciente.png"/></a> 
-                                    | <a href="exame.jsp?nome=${paciente.nome} ${paciente.sobrenome}&sexo=${paciente.sexo}"><img width="30" height="30" src="imagens/exame.png"/></a>
+                                    <a href="./EditarPacienteController?id=${paciente.id}"><img title="Editar Paciente" width="30" height="30" src="imagens/editar-paciente.png"/></a>
+                                    | <a href="./ExcluirPacienteController?id=${paciente.id}"><img title="Remover Paciente" width="30" height="30" src="imagens/remover-paciente.png"/></a> 
+                                    | <a href="./RecuperarPacienteController?id=${paciente.id}"><img title="Gerenciar exames do paciente" width="30" height="30" src="imagens/exame.png"/></a>
                                 </td>
                                 
                             </tr>
