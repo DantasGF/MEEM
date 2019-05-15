@@ -6,11 +6,14 @@
 package br.edu.fescfafic.meem.dao;
 
 import br.edu.fescfafic.meem.model.Exame;
+import br.edu.fescfafic.meem.model.TipoExame;
 import br.edu.fescfafic.meem.util.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,9 +33,9 @@ public class ExameDAO {
         try {
             String sql = "INSERT INTO exame (id_tipo_exame, q1a ,q1b, q1c, q1d, q1e, "
                     + "q2a, q2b, q2c, q2d, q2e, q3a, q3b, q3c, q4a, q4b, q4c, q4d, q4e, "
-                    + "q5a, q5b, q5c, q6a, q6b, q7a, q8a, q8b, q8c, q9a, q10a, q11a) "
+                    + "q5a, q5b, q5c, q6a, q6b, q7a, q8a, q8b, q8c, q9a, q10a, q11a, id_paciente) "
                     + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,"
-                    + " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    + " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = this.connection.prepareStatement(sql);
             stmt.setInt(1, 1); //exame.getIdTipoExame()
             stmt.setInt(2, exame.getQ1a());
@@ -76,6 +79,8 @@ public class ExameDAO {
             
             stmt.setInt(31, exame.getQ11a());
             
+            stmt.setInt(32, exame.getPaciente().getId());
+            
             stmt.execute();
             return true;
         } catch (SQLException ex) {
@@ -84,23 +89,146 @@ public class ExameDAO {
         return false;
     }
     
-    public int pountuacao(int id){
+    public List<Exame> listarPorPaciente(int idPaciente){
+        List<Exame> exames = new ArrayList<>();
         try {
-            String sql = "SELECT SUM(" +
-                    "	q1a + q1b + q1c + q1d + q1e +" +
-                    "	q2a + q2b + q2c + q2d + q2e +" +
-                    "	q3a + q3b + q3c +" +
-                    "	q4a + q4b + q4c + q4d + q4e +" +
-                    "	q5a + q5b + q5c +" +
-                    "	q6a + q6b +" +
-                    "	q7a +" +
-                    "	q8a + q8b + q8c +" +
-                    "	q9a +" +
-                    "	q10a +" +
-                    "	q11a" +
-                    ") AS pontuacao FROM exame WHERE id = ?";
+            String sql = "SELECT * FROM exame as e JOIN tipo_exame as te ON e.id_tipo_exame = te.id WHERE id_paciente = ?";
             PreparedStatement stmt = this.connection.prepareStatement(sql);
-            stmt.setInt(1, id);
+            stmt.setInt(1, idPaciente);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                Exame exame = new Exame();
+                exame.setId(rs.getInt("id"));
+                
+                exame.setQ1a(rs.getInt("q1a"));
+                exame.setQ1b(rs.getInt("q1b"));
+                exame.setQ1c(rs.getInt("q1c"));
+                exame.setQ1d(rs.getInt("q1d"));
+                exame.setQ1e(rs.getInt("q1e"));
+                
+                exame.setQ2a(rs.getInt("q2a"));
+                exame.setQ2b(rs.getInt("q2b"));
+                exame.setQ2c(rs.getInt("q2c"));
+                exame.setQ2d(rs.getInt("q2d"));
+                exame.setQ2e(rs.getInt("q2e"));
+                
+                exame.setQ3a(rs.getInt("q3a"));
+                exame.setQ3b(rs.getInt("q3b"));
+                exame.setQ3c(rs.getInt("q3c"));
+                
+                exame.setQ4a(rs.getInt("q4a"));
+                exame.setQ4b(rs.getInt("q4b"));
+                exame.setQ4c(rs.getInt("q4c"));
+                exame.setQ4d(rs.getInt("q4d"));
+                exame.setQ4e(rs.getInt("q4e"));
+                
+                exame.setQ5a(rs.getInt("q5a"));
+                exame.setQ5b(rs.getInt("q5b"));
+                exame.setQ5c(rs.getInt("q5c"));
+                
+                exame.setQ6a(rs.getInt("q6a"));
+                exame.setQ6b(rs.getInt("q6b"));
+                
+                exame.setQ7a(rs.getInt("q7a"));
+                
+                exame.setQ8a(rs.getInt("q8a"));
+                exame.setQ8b(rs.getInt("q8b"));
+                exame.setQ8c(rs.getInt("q8c"));
+                
+                exame.setQ9a(rs.getInt("q9a"));
+                
+                exame.setQ10a(rs.getInt("q10a"));
+                
+                exame.setQ11a(rs.getInt("q11a"));
+                
+                TipoExame tipoExame = new TipoExame();
+                tipoExame.setTipo(rs.getString("tipo"));
+                
+                exame.setTipoExame(tipoExame);
+                
+                exame.setPontuacao(pontuacao(exame.getId()));
+                
+                exames.add(exame);
+            }
+            return exames;
+        } catch (SQLException ex) {
+            Logger.getLogger(ExameDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public Exame recuperarPorExame(int idExame){
+        try {
+            String sql = "SELECT * FROM exame as e JOIN tipo_exame as te ON e.id_tipo_exame = te.id WHERE e.id = ?";
+            PreparedStatement stmt = this.connection.prepareStatement(sql);
+            stmt.setInt(1, idExame);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+                Exame exame = new Exame();
+                
+                exame.setId(rs.getInt("id"));
+                
+                exame.setQ1a(rs.getInt("q1a"));
+                exame.setQ1b(rs.getInt("q1b"));
+                exame.setQ1c(rs.getInt("q1c"));
+                exame.setQ1d(rs.getInt("q1d"));
+                exame.setQ1e(rs.getInt("q1e"));
+                
+                exame.setQ2a(rs.getInt("q2a"));
+                exame.setQ2b(rs.getInt("q2b"));
+                exame.setQ2c(rs.getInt("q2c"));
+                exame.setQ2d(rs.getInt("q2d"));
+                exame.setQ2e(rs.getInt("q2e"));
+                
+                exame.setQ3a(rs.getInt("q3a"));
+                exame.setQ3b(rs.getInt("q3b"));
+                exame.setQ3c(rs.getInt("q3c"));
+                
+                exame.setQ4a(rs.getInt("q4a"));
+                exame.setQ4b(rs.getInt("q4b"));
+                exame.setQ4c(rs.getInt("q4c"));
+                exame.setQ4d(rs.getInt("q4d"));
+                exame.setQ4e(rs.getInt("q4e"));
+                
+                exame.setQ5a(rs.getInt("q5a"));
+                exame.setQ5b(rs.getInt("q5b"));
+                exame.setQ5c(rs.getInt("q5c"));
+                
+                exame.setQ6a(rs.getInt("q6a"));
+                exame.setQ6b(rs.getInt("q6b"));
+                
+                exame.setQ7a(rs.getInt("q7a"));
+                
+                exame.setQ8a(rs.getInt("q8a"));
+                exame.setQ8b(rs.getInt("q8b"));
+                exame.setQ8c(rs.getInt("q8c"));
+                
+                exame.setQ9a(rs.getInt("q9a"));
+                
+                exame.setQ10a(rs.getInt("q10a"));
+                
+                exame.setQ11a(rs.getInt("q11a"));
+                
+                TipoExame tipoExame = new TipoExame();
+                tipoExame.setTipo(rs.getString("tipo"));
+                
+                exame.setTipoExame(tipoExame);
+                
+                exame.setPontuacao(pontuacao(exame.getId()));
+                
+                return exame;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ExameDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public int pontuacao(int idExame){
+        try {
+            String sql = "SELECT SUM(q1a  +  q1b  +  q1c  +  q1d  +  q1e  +  q2a  +  q2b +  q2c +  q2d +  q2e +  q3a +  q3b +  q3c +  q4a +  q4b +  q4c +  q4d +  q4e + q5a + q5b +  q5c +  q6a +  q6b +  q7a +  q8a +  q8b +  q8c +  q9a +  q10a +  q11a) as pontuacao FROM exame WHERE id = ?";
+            PreparedStatement stmt = this.connection.prepareStatement(sql);
+            stmt.setInt(1, idExame);
             ResultSet rs = stmt.executeQuery();
             if(rs.next()){
                 return rs.getInt("pontuacao");

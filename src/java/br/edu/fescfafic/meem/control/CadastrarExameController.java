@@ -2,6 +2,7 @@ package br.edu.fescfafic.meem.control;
 
 import br.edu.fescfafic.meem.dao.ExameDAO;
 import br.edu.fescfafic.meem.model.Exame;
+import br.edu.fescfafic.meem.model.Paciente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -16,6 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 public class CadastrarExameController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        int idPaciente = Integer.parseInt(request.getParameter("pid"));
+        
         int q1a = 0;
         int q1b = 0;
         int q1c = 0;
@@ -190,10 +194,15 @@ public class CadastrarExameController extends HttpServlet {
         
         exame.setQ11a(q11a);
         
+        Paciente paciente = new Paciente();
+        paciente.setId(idPaciente);
+        
+        exame.setPaciente(paciente);
+        
         ExameDAO exameDAO = new ExameDAO();
         exameDAO.inserir(exame);
         
-        request.getRequestDispatcher("./ListarPacientesController").forward(request, response);
+        request.getRequestDispatcher("./RecuperarPacienteController?id=" + idPaciente).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

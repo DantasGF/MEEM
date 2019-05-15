@@ -16,6 +16,7 @@ public class Pessoa {
     private int id;
     private String nome;
     private String sobrenome;
+    private String cpf;
     private String sexo;
     private Endereco endereco;
     private Date dataNascimento;
@@ -49,12 +50,20 @@ public class Pessoa {
     public void setSobrenome(String sobrenome) {
         this.sobrenome = sobrenome;
     }
-    
-    public String getSexo(){
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getSexo() {
         return sexo;
     }
-    
-    public void setSexo(String sexo){
+
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 

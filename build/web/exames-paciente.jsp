@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="br.edu.fescfafic.meem.model.Psicologo"%>
 <jsp:include page="includes/topo.jsp"/>
     <% 
@@ -48,35 +49,29 @@
                     <h2>Exames</h2>
                     <table id="tabela" border="0">
                         <tr id="tr-tabela">
-                            <td id="td-tabela">Data de Realização</td>
-                            <td id="td-tabela">Observações</td>
+                            <td id="td-tabela">Tipo do Exame</td>
                             <td id="td-tabela">Pontuação</td>
                             <td id="td-tabela">Ações</td>
                         </tr>
 
                         <tr id="tr-tabela">
-                        <c:forEach items="" var="">
-
+                            <c:forEach items="${exame}" var="exame">
                             <td id="td-tabela">
-                                07/05/2019
+                                ${exame.tipoExame.tipo}
                             </td>
 
                             <td id="td-tabela">
-                                Nenhuma observação
-                            </td>
-                            
-                            <td id="td-tabela">
-                                30
+                                <center>
+                                    ${exame.pontuacao}
+                                </center>
                             </td>
 
                             <td id="td-tabela">
-                                <a href="">
-                                    <img width="30" height="30" src="imagens/adobe-pdf-icon.png"/>
-                                </a>
+                                <a href="./GerarRelatorioController?pid=${paciente.id}&eid=${exame.id}"><img width="30" height="30" src="imagens/pdf.png"/></a> |
+                                <a href=""><img width="30" height="30" src="imagens/remover-pdf.png"/></a>
                             </td>
                         </tr>
                         </c:forEach>
-
                     </table><br>
                 </center>
             </div>

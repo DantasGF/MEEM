@@ -33,6 +33,7 @@
                 <h1>Exame</h1>
                 <div id="aviso">
                     <form action="./CadastrarExameController" method="post">
+                        <input name="pid" value="<%= request.getParameter("pid") %>" hidden>
                         <ul>
                             <li>
                                 <h3>

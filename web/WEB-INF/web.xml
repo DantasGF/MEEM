@@ -40,6 +40,10 @@
         <servlet-name>CadastrarExameController</servlet-name>
         <servlet-class>br.edu.fescfafic.meem.control.CadastrarExameController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GerarRelatorioController</servlet-name>
+        <servlet-class>br.edu.fescfafic.meem.control.GerarRelatorioController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CadastraPsicologoController</servlet-name>
         <url-pattern>/CadastraPsicologoController</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>CadastrarExameController</servlet-name>
         <url-pattern>/CadastrarExameController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GerarRelatorioController</servlet-name>
+        <url-pattern>/GerarRelatorioController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

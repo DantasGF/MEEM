@@ -15,7 +15,9 @@ import java.util.List;
 public class Exame {
     
     private int id;
-    private int idTipoExame;
+    private TipoExame tipoExame;
+    private Paciente paciente;
+    private int pontuacao;
     
     private int q1a;
     private int q1b;
@@ -66,14 +68,14 @@ public class Exame {
         this.id = id;
     }
 
-    public int getIdTipoExame() {
-        return idTipoExame;
+    public TipoExame getTipoExame() {
+        return tipoExame;
     }
 
-    public void setIdTipoExame(int idTipoExame) {
-        this.idTipoExame = idTipoExame;
+    public void setTipoExame(TipoExame tipoExame) {
+        this.tipoExame = tipoExame;
     }
-
+    
     public int getQ1a() {
         return q1a;
     }
@@ -314,4 +316,19 @@ public class Exame {
         this.q11a = q11a;
     }
 
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+    
+    public int getPontuacao() {
+        return pontuacao;
+    }
+
+    public void setPontuacao(int pontuacao) {
+        this.pontuacao = pontuacao;
+    }
 }

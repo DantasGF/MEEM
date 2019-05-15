@@ -1,8 +1,11 @@
 package br.edu.fescfafic.meem.control;
 
+import br.edu.fescfafic.meem.dao.ExameDAO;
 import br.edu.fescfafic.meem.dao.PacienteDAO;
+import br.edu.fescfafic.meem.model.Exame;
 import br.edu.fescfafic.meem.model.Paciente;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,8 +22,10 @@ public class RecuperarPacienteController extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         
         Paciente paciente = new PacienteDAO().recuperarPaciente(id);
+        List<Exame> exames = new ExameDAO().listarPorPaciente(id);
         
         request.setAttribute("paciente", paciente);
+        request.setAttribute("exame", exames);
         request.getRequestDispatcher("./exames-paciente.jsp").forward(request, response);
     }
 

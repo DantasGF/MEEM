@@ -24,7 +24,7 @@ public class TestaNumeroPaciente {
         //System.out.println(pDAO.numPaciente(6));
         
         ExameDAO eDAO = new ExameDAO();
-        System.out.println("Pontuação do 1° exame: " + eDAO.pountuacao(1));
+        System.out.println(eDAO.recuperarPorExame(1));
     }
     
 }
