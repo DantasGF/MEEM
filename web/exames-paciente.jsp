@@ -67,8 +67,8 @@
                             </td>
 
                             <td id="td-tabela">
-                                <a href="./GerarRelatorioController?pid=${paciente.id}&eid=${exame.id}"><img width="30" height="30" src="imagens/pdf.png"/></a> |
-                                <a href=""><img width="30" height="30" src="imagens/remover-pdf.png"/></a>
+                                <a target="_blank" href="./GerarRelatorioController?pid=${paciente.id}&eid=${exame.id}"><img title="Baixar PDF" width="30" height="30" src="imagens/pdf.png"/></a> |
+                                <a href=""><img title="Remover Exame" width="30" height="30" src="imagens/remover-pdf.png"/></a>
                             </td>
                         </tr>
                         </c:forEach>

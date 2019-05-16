@@ -32,6 +32,8 @@ public class CadastraPacienteController extends HttpServlet {
         String cidade = request.getParameter("cidade");
         String estado = request.getParameter("estado");
         String telefone = request.getParameter("telefone");
+        String email = request.getParameter("email");
+        int grauEscolaridade = Integer.parseInt(request.getParameter("grauEscolaridade"));
         
         Endereco endereco = new Endereco();
         endereco.setRua(rua);
@@ -49,16 +51,20 @@ public class CadastraPacienteController extends HttpServlet {
         paciente.setEndereco(endereco);
         paciente.setPsicologo(psicologo);
         paciente.setTelefone(telefone);
+        paciente.setEmail(email);
+        paciente.setGrauEscolaridade(grauEscolaridade);
         
         PacienteDAO pacienteDAO = new PacienteDAO();
         pacienteDAO.cadastrar(paciente);
         
-//        HttpSession sessao = request.getSession();
-//        
-//        Login login = new Login();
-//        sessao.setAttribute("quantidadePaciente", new PsicologoDAO().quantidadePacientes(new PsicologoDAO().returnIdPsicologo(login)));
-//        
-        response.sendRedirect("./ListarPacientesController");
+        HttpSession sessao = request.getSession();
+        Login login = new Login();
+        login.setUsuario(psicologo.getLogin().getUsuario());
+        login.setSenha(psicologo.getLogin().getSenha());
+        sessao.setAttribute("quantidadePaciente", new PsicologoDAO().
+                quantidadePacientes(new PsicologoDAO().returnIdPsicologo(login)));
+        request.setAttribute("dadosPaciente", paciente);
+        request.getRequestDispatcher("./EnviarEmailController").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

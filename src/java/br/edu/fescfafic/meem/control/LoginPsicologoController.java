@@ -48,9 +48,12 @@ public class LoginPsicologoController extends HttpServlet {
             HttpSession sessao = request.getSession();
             sessao.setAttribute("psicologo", new PsicologoDAO()
                     .buscarPsicologoLogin(login));
-            sessao.setAttribute("quantidadePaciente", new PsicologoDAO().quantidadePacientes(new PsicologoDAO().returnIdPsicologo(login)));
-            sessao.setAttribute("quantidadeExames", new ExameDAO().quantidadeExamesRealizados(new PsicologoDAO().returnIdPsicologo(login)));
-            sessao.setAttribute("mediaPontuacaoExames", new ExameDAO().mediaPontuacaoExame(new PsicologoDAO().returnIdPsicologo(login)));
+            sessao.setAttribute("quantidadePaciente", new PsicologoDAO()
+                    .quantidadePacientes(new PsicologoDAO().returnIdPsicologo(login)));
+            sessao.setAttribute("quantidadeExames", new ExameDAO()
+                    .quantidadeExamesRealizados(new PsicologoDAO().returnIdPsicologo(login)));
+            sessao.setAttribute("mediaPontuacaoExames", new ExameDAO()
+                    .mediaPontuacaoExame(new PsicologoDAO().returnIdPsicologo(login)));
             response.sendRedirect("./area-psicologo.jsp");
         }
         else{

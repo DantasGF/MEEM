@@ -44,6 +44,10 @@
         <servlet-name>GerarRelatorioController</servlet-name>
         <servlet-class>br.edu.fescfafic.meem.control.GerarRelatorioController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EnviarEmailController</servlet-name>
+        <servlet-class>br.edu.fescfafic.meem.control.EnviarEmailController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CadastraPsicologoController</servlet-name>
         <url-pattern>/CadastraPsicologoController</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>GerarRelatorioController</servlet-name>
         <url-pattern>/GerarRelatorioController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EnviarEmailController</servlet-name>
+        <url-pattern>/EnviarEmailController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

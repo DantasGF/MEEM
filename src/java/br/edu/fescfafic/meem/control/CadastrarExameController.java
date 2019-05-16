@@ -3,7 +3,9 @@ package br.edu.fescfafic.meem.control;
 import br.edu.fescfafic.meem.dao.ExameDAO;
 import br.edu.fescfafic.meem.dao.PsicologoDAO;
 import br.edu.fescfafic.meem.model.Exame;
+import br.edu.fescfafic.meem.model.Login;
 import br.edu.fescfafic.meem.model.Paciente;
+import br.edu.fescfafic.meem.model.Psicologo;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,7 +21,7 @@ import javax.servlet.http.HttpSession;
 public class CadastrarExameController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        Psicologo psicologo = (Psicologo)request.getSession().getAttribute("psicologo");
         int idPaciente = Integer.parseInt(request.getParameter("pid"));
         
         int q1a = 0;
@@ -204,7 +206,17 @@ public class CadastrarExameController extends HttpServlet {
         ExameDAO exameDAO = new ExameDAO();
         exameDAO.inserir(exame);
         
-        request.getRequestDispatcher("./RecuperarPacienteController?id=" + idPaciente).forward(request, response);
+        HttpSession sessao = request.getSession();
+        Login login = new Login();
+        login.setUsuario(psicologo.getLogin().getUsuario());
+        login.setSenha(psicologo.getLogin().getSenha());
+        sessao.setAttribute("quantidadeExames", new ExameDAO()
+                .quantidadeExamesRealizados(new PsicologoDAO().returnIdPsicologo(login)));
+        sessao.setAttribute("mediaPontuacaoExames", new ExameDAO()
+                .mediaPontuacaoExame(new PsicologoDAO().returnIdPsicologo(login)));
+        
+        request.getRequestDispatcher("./RecuperarPacienteController?id=" 
+                + idPaciente).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

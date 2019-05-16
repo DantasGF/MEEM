@@ -79,8 +79,8 @@
                         
                         <tr>
                             <td>
-                                <center>
-                                    <select required="true" id="campo-login" name="estado">
+                                    <select required="true" style="width: 370px;" id="campo-login" name="estado">
+                                        <option value="">Selecione um estado...</option>
                                         <option value="AC">Acre</option>
                                         <option value="AL">Alagoas</option>
                                         <option value="AP">Amapá</option>
@@ -108,14 +108,30 @@
                                         <option value="SP">São Paulo</option>
                                         <option value="SE">Sergipe</option>
                                         <option value="TO">Tocantins</option>
-                                    </select>
                                 </center>
                             </td>
                         </tr>
                         
                         <tr>
                             <td>
-                                <input required="true" id="campo-login" name="telefone" placeholder="(XX) X XXXX-XXXX">
+                                    <select required="true" style="width: 370px;" id="campo-login" name="grauEscolaridade">
+                                        <option value="">Grau de escolaridade...</option>
+                                        <option value="0">Analfabeto</option>
+                                        <option value="1">Ensino Fundamental (0 à 3 anos de estudo)</option>
+                                        <option value="2">Ensino Médio (4 à 8+ anos de estudo)</option>
+                                </center>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <input required="true" id="campo-login" name="email" placeholder="Email">
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <input required="true" id="campo-login" name="telefone" placeholder="Telefone. Ex. (00) 0 0000-0000">
                             </td>
                         </tr>
                         

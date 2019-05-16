@@ -13,7 +13,7 @@ package br.edu.fescfafic.meem.model;
 public class Paciente extends Pessoa {
     
     private Psicologo psicologo;
-    private String grauEscolaridade;
+    private int grauEscolaridade;
 
     public Psicologo getPsicologo() {
         return psicologo;
@@ -22,6 +22,13 @@ public class Paciente extends Pessoa {
     public void setPsicologo(Psicologo psicologo) {
         this.psicologo = psicologo;
     }
-    
-    
+
+    public int getGrauEscolaridade() {
+        return grauEscolaridade;
+    }
+
+    public void setGrauEscolaridade(int grauEscolaridade) {
+        this.grauEscolaridade = grauEscolaridade;
+    }
+
 }

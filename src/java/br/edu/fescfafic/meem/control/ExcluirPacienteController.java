@@ -1,11 +1,16 @@
 package br.edu.fescfafic.meem.control;
 
+import br.edu.fescfafic.meem.dao.ExameDAO;
 import br.edu.fescfafic.meem.dao.PacienteDAO;
+import br.edu.fescfafic.meem.dao.PsicologoDAO;
+import br.edu.fescfafic.meem.model.Login;
+import br.edu.fescfafic.meem.model.Psicologo;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -15,10 +20,22 @@ public class ExcluirPacienteController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Psicologo psicologo = (Psicologo)request.getSession().getAttribute("psicologo");
         int id = Integer.parseInt(request.getParameter("id"));
         
         PacienteDAO pacienteDAO = new PacienteDAO();
         pacienteDAO.excluir(id);
+        
+        HttpSession sessao = request.getSession();
+        Login login = new Login();
+        login.setUsuario(psicologo.getLogin().getUsuario());
+        login.setSenha(psicologo.getLogin().getSenha());
+        sessao.setAttribute("quantidadePaciente", new PsicologoDAO()
+                .quantidadePacientes(new PsicologoDAO().returnIdPsicologo(login)));
+        sessao.setAttribute("quantidadeExames", new ExameDAO()
+                .quantidadeExamesRealizados(new PsicologoDAO().returnIdPsicologo(login)));
+        sessao.setAttribute("mediaPontuacaoExames", new ExameDAO()
+                .mediaPontuacaoExame(new PsicologoDAO().returnIdPsicologo(login)));
         
         response.sendRedirect("./ListarPacientesController");
     }

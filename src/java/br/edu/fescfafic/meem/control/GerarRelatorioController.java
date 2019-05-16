@@ -20,6 +20,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -40,7 +41,7 @@ public class GerarRelatorioController extends HttpServlet {
             Exame exame = exameDAO.recuperarPorExame(idExame);
             
             Document documento = new Document();
-            PdfWriter.getInstance(documento, new FileOutputStream(new File("C:\\Users\\COMPUTER\\Downloads/documento.pdf")));
+            PdfWriter.getInstance(documento, response.getOutputStream());
             
             documento.open();
             

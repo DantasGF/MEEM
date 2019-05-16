@@ -38,34 +38,53 @@
     <center>
         <div id="area_principal">
             <h1>Área do Psicólogo</h1>
+            <center>
             <div id="dashboard">
                 <div id="info-dash">
-                    Número de pacientes cadastrados ${quantidadePaciente}
+                    Número de pacientes<br>
+                    <center>
+                        <h2>${quantidadePaciente}</h2>
+                    </center>
                 </div>
                 <div id="info-dash">
-                    Quantidade de exames realizados ${quantidadeExames}
+                   Total de exames realizados<br>
+                    <center>
+                        <h2>${quantidadeExames}</h2>
+                    </center>
                 </div>
                 <div id="info-dash">
-                    Média de pontuação dos exames do pacientes ${mediaPontuacaoExames}
+                    Média das pontuações<br>
+                    <center>
+                        <h2>${mediaPontuacaoExames}</h2>
+                    </center>
                 </div>
             </div>
+            </center>
             <div id="aviso">
                 <p>
-                    [ ! ] Olá <b>${psicologo.nome}</b>, seja bem-vindo(a) ao nosso sitema.
+                    Olá <b>${psicologo.nome}</b>, seja bem-vindo(a) ao nosso sitema.
                     <br><br>
                     <b>
                         O propósito do nosso trabalho é informatizar o Mini
                         Exame do Estado Mental para que você, psicólogo(a) 
-                        possa ter uma melhor gestão dos testes realizados 
-                        em seus pacientes...
+                        possa ter uma melhor experiência e praticidade ao realizar os testes 
+                        em seus pacientes.
                         <br><br>
                         [ ! ] Você terá acesso aos seguintes recursos do sistema:
                         <br>
                     </b>
-                        => Cadastro de pacientes<br>
-                        => Gerenciamento de seus pacientes<br>
-                        => Realizar exame com o seus pacientes<br>
-                        => Visualizar os resultados do exame de seus paciêntes<br>
+                        <br>
+                            - Cadastro de pacientes
+                        <br>
+                        <br>
+                            - Gerenciamento de seus pacientes(editar, remover e realizar exame)
+                        <br>
+                        <br>
+                            - Visualizar os resultados do exame de seus paciêntes
+                        <br>
+                        <br>
+                            - Gerar relatório dos testes do seus pacientes
+                        <br>
                         <br><b>- Aviso do Sistema</b>
                 </p>
             </div>
