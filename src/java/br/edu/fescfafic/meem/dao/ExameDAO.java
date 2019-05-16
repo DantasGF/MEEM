@@ -238,4 +238,38 @@ public class ExameDAO {
         }
         return 0;
     }
+    
+    public int quantidadeExamesRealizados(int idPsicologo){
+        try {
+            String sql = "SELECT COUNT(*) as quantidadeExames FROM exame as e JOIN paciente as p ON p.id = e.id_paciente WHERE p.id_psicologo = ?";
+            PreparedStatement stmt = this.connection.prepareStatement(sql);
+            stmt.setInt(1, idPsicologo);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+                return rs.getInt("quantidadeExames");
+            }
+            stmt.close();
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ExameDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+    
+    public double mediaPontuacaoExame(int idPsicologo){
+        try {
+            String sql = "SELECT AVG(q1a  +  q1b  +  q1c  +  q1d  +  q1e  +  q2a  +  q2b +  q2c +  q2d +  q2e +  q3a +  q3b +  q3c +  q4a +  q4b +  q4c +  q4d +  q4e + q5a + q5b +  q5c +  q6a +  q6b +  q7a +  q8a +  q8b +  q8c +  q9a +  q10a +  q11a) as mediaPontuacao FROM exame as e JOIN paciente as p ON p.id = e.id_paciente WHERE p.id_psicologo = ?";
+            PreparedStatement stmt = this.connection.prepareStatement(sql);
+            stmt.setInt(1, idPsicologo);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+                return rs.getInt("mediaPontuacao");
+            }
+            stmt.close();
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ExameDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
 }

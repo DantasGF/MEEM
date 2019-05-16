@@ -40,7 +40,7 @@ public class GerarRelatorioController extends HttpServlet {
             Exame exame = exameDAO.recuperarPorExame(idExame);
             
             Document documento = new Document();
-            PdfWriter.getInstance(documento, new FileOutputStream(new File("C:\\Users\\Gutemberg\\Downloads/documento.pdf")));
+            PdfWriter.getInstance(documento, new FileOutputStream(new File("C:\\Users\\COMPUTER\\Downloads/documento.pdf")));
             
             documento.open();
             
@@ -67,8 +67,8 @@ public class GerarRelatorioController extends HttpServlet {
             
             Paragraph questoes = new Paragraph();
             
-            Image acerto = Image.getInstance("C:\\Users\\Gutemberg\\Documents\\ProjetosGithub\\MEEM\\web\\imagens/acerto.png");
-            acerto.scaleToFit(40, 40);
+            //Image acerto = Image.getInstance("C:\\Users\\Gutemberg\\Documents\\ProjetosGithub\\MEEM\\web\\imagens/acerto.png");
+            //acerto.scaleToFit(40, 40);
             
             questoes.add("1 - Orientação Temporal (0 - 5 pontos)\n");
             if(exame.getQ1a() == 1){

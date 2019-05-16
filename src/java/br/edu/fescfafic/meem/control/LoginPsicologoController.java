@@ -5,6 +5,7 @@
  */
 package br.edu.fescfafic.meem.control;
 
+import br.edu.fescfafic.meem.dao.ExameDAO;
 import br.edu.fescfafic.meem.dao.LoginDAO;
 import br.edu.fescfafic.meem.dao.PsicologoDAO;
 import br.edu.fescfafic.meem.model.Login;
@@ -45,9 +46,11 @@ public class LoginPsicologoController extends HttpServlet {
         LoginDAO loginDAO = new LoginDAO();
         if (loginDAO.validar(login)){
             HttpSession sessao = request.getSession();
-            sessao.setMaxInactiveInterval(3999999);
             sessao.setAttribute("psicologo", new PsicologoDAO()
                     .buscarPsicologoLogin(login));
+            sessao.setAttribute("quantidadePaciente", new PsicologoDAO().quantidadePacientes(new PsicologoDAO().returnIdPsicologo(login)));
+            sessao.setAttribute("quantidadeExames", new ExameDAO().quantidadeExamesRealizados(new PsicologoDAO().returnIdPsicologo(login)));
+            sessao.setAttribute("mediaPontuacaoExames", new ExameDAO().mediaPontuacaoExame(new PsicologoDAO().returnIdPsicologo(login)));
             response.sendRedirect("./area-psicologo.jsp");
         }
         else{

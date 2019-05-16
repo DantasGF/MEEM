@@ -156,3 +156,13 @@ ul, li{
 #paginacao{
     text-align: left;
 }
+
+#info-dash{
+    border: 1px Solid #CCC;
+    width: 200px;
+    height: 80px;
+    background: white;
+    padding: 10px;
+    display: inline-block;
+    box-shadow: 2px 2px 10px #CCC;
+}

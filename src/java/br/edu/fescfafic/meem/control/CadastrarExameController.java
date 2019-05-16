@@ -1,6 +1,7 @@
 package br.edu.fescfafic.meem.control;
 
 import br.edu.fescfafic.meem.dao.ExameDAO;
+import br.edu.fescfafic.meem.dao.PsicologoDAO;
 import br.edu.fescfafic.meem.model.Exame;
 import br.edu.fescfafic.meem.model.Paciente;
 import java.io.IOException;
@@ -9,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *

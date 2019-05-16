@@ -1,7 +1,10 @@
 package br.edu.fescfafic.meem.control;
 
+import br.edu.fescfafic.meem.dao.ExameDAO;
 import br.edu.fescfafic.meem.dao.PacienteDAO;
+import br.edu.fescfafic.meem.dao.PsicologoDAO;
 import br.edu.fescfafic.meem.model.Endereco;
+import br.edu.fescfafic.meem.model.Login;
 import br.edu.fescfafic.meem.model.Paciente;
 import br.edu.fescfafic.meem.model.Psicologo;
 import java.io.IOException;
@@ -10,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -49,6 +53,11 @@ public class CadastraPacienteController extends HttpServlet {
         PacienteDAO pacienteDAO = new PacienteDAO();
         pacienteDAO.cadastrar(paciente);
         
+//        HttpSession sessao = request.getSession();
+//        
+//        Login login = new Login();
+//        sessao.setAttribute("quantidadePaciente", new PsicologoDAO().quantidadePacientes(new PsicologoDAO().returnIdPsicologo(login)));
+//        
         response.sendRedirect("./ListarPacientesController");
     }
 

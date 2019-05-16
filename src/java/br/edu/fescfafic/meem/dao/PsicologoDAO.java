@@ -127,4 +127,40 @@ public class PsicologoDAO {
         }
         return null;
     }
+    
+    public int returnIdPsicologo(Login login){
+        try {
+            String sql = "SELECT id FROM psicologo WHERE usuario = ? AND senha = ? ";
+            PreparedStatement stmt = this.connection.prepareStatement(sql);
+            stmt.setString(1, login.getUsuario());
+            stmt.setString(2, login.getSenha());
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+                return rs.getInt("id");
+            }
+            stmt.close();
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(PsicologoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+        
+    
+    public int quantidadePacientes(int idPsicologo){
+        try {
+            String sql = "SELECT COUNT(*) as quantidadePacientes FROM paciente WHERE id_psicologo = ?";
+            PreparedStatement stmt = this.connection.prepareStatement(sql);
+            stmt.setInt(1, idPsicologo);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+                return rs.getInt("quantidadePacientes");
+            }
+            stmt.close();
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(PsicologoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
 }

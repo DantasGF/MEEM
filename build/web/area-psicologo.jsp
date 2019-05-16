@@ -2,7 +2,7 @@
 <jsp:include page="includes/topo.jsp"/>
     <% 
         Psicologo psicologo = (Psicologo) session.getAttribute("psicologo");
-
+        
         if(psicologo == null){
             response.sendRedirect("./index.jsp");
         }
@@ -38,6 +38,17 @@
     <center>
         <div id="area_principal">
             <h1>Área do Psicólogo</h1>
+            <div id="dashboard">
+                <div id="info-dash">
+                    Número de pacientes cadastrados ${quantidadePaciente}
+                </div>
+                <div id="info-dash">
+                    Quantidade de exames realizados ${quantidadeExames}
+                </div>
+                <div id="info-dash">
+                    Média de pontuação dos exames do pacientes ${mediaPontuacaoExames}
+                </div>
+            </div>
             <div id="aviso">
                 <p>
                     [ ! ] Olá <b>${psicologo.nome}</b>, seja bem-vindo(a) ao nosso sitema.

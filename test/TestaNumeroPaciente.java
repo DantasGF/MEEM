@@ -2,6 +2,7 @@
 import br.edu.fescfafic.meem.dao.ExameDAO;
 import br.edu.fescfafic.meem.dao.PacienteDAO;
 import br.edu.fescfafic.meem.dao.PsicologoDAO;
+import br.edu.fescfafic.meem.model.Login;
 import br.edu.fescfafic.meem.model.Psicologo;
 
 /*
@@ -23,8 +24,11 @@ public class TestaNumeroPaciente {
         //PacienteDAO pDAO = new PacienteDAO();
         //System.out.println(pDAO.numPaciente(6));
         
+        Login login = new Login();
+        login.setUsuario("02");
+        login.setSenha("02");
         ExameDAO eDAO = new ExameDAO();
-        System.out.println(eDAO.recuperarPorExame(1));
+        System.out.println(eDAO.mediaPontuacaoExame(new PsicologoDAO().returnIdPsicologo(login)));
     }
     
 }
