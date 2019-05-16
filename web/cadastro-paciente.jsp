@@ -117,8 +117,8 @@
                                     <select required="true" style="width: 370px;" id="campo-login" name="grauEscolaridade">
                                         <option value="">Grau de escolaridade...</option>
                                         <option value="0">Analfabeto</option>
-                                        <option value="1">Ensino Fundamental (0 à 3 anos de estudo)</option>
-                                        <option value="2">Ensino Médio (4 à 8+ anos de estudo)</option>
+                                        <option value="1">0 à 3 anos de estudo</option>
+                                        <option value="2">4 à 8+ anos de estudo</option>
                                 </center>
                             </td>
                         </tr>

@@ -51,6 +51,8 @@
                         <tr id="tr-tabela">
                             <td id="td-tabela">Tipo do Exame</td>
                             <td id="td-tabela">Pontuação</td>
+                            <td id="td-tabela">Avaliação</td>
+                            <td id="td-tabela">Escore médio para depressão</td>
                             <td id="td-tabela">Ações</td>
                         </tr>
 
@@ -65,10 +67,42 @@
                                     ${exame.pontuacao}
                                 </center>
                             </td>
+                            
+                            <td id="td-tabela">
+                                <center>
+                                    <c:if test="${exame.pontuacao > 27}">
+                                        Normal
+                                    </c:if>
+                                    <c:if test="${exame.pontuacao <= 27}">
+                                        Demência
+                                    </c:if>
+                                </center>
+                            </td>
+                            
+                            <td id="td-tabela">
+                                <center>
+                                    <c:choose>
+                                        <c:when test="${(exame.pontuacao >= 19) and (exame.pontuacao < 25)}">
+                                            Depressão não-complicada
+                                        </c:when>
+                                        <c:when test="${exame.pontuacao < 19}">
+                                            Prejuízo cognitivo por depressão
+                                        </c:when>
+                                        <c:when test="${exame.pontuacao > 27}">
+                                            Normal
+                                        </c:when>
+                                        <c:otherwise>
+                                            Normal
+                                        </c:otherwise>
+                                    </c:choose>
+                                </center>
+                            </td>
 
                             <td id="td-tabela">
-                                <a target="_blank" href="./GerarRelatorioController?pid=${paciente.id}&eid=${exame.id}"><img title="Baixar PDF" width="30" height="30" src="imagens/pdf.png"/></a> |
-                                <a href=""><img title="Remover Exame" width="30" height="30" src="imagens/remover-pdf.png"/></a>
+                                <center>
+                                    <a target="_blank" href="./GerarRelatorioController?pid=${paciente.id}&eid=${exame.id}">
+                                        <img title="Baixar PDF" width="30" height="30" src="imagens/pdf.png"/></a>
+                                </center>
                             </td>
                         </tr>
                         </c:forEach>

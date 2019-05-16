@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -41,6 +42,7 @@ public class GerarRelatorioController extends HttpServlet {
             Exame exame = exameDAO.recuperarPorExame(idExame);
             
             Document documento = new Document();
+            response.setHeader("Content-disposition", "filename=Relatório"+ paciente.getNome() +".pdf");
             PdfWriter.getInstance(documento, response.getOutputStream());
             
             documento.open();

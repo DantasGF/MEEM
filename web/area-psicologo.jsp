@@ -43,19 +43,19 @@
                 <div id="info-dash">
                     Número de pacientes<br>
                     <center>
-                        <h2>${quantidadePaciente}</h2>
+                        <h2>${quantidadePaciente} Pacientes</h2>
                     </center>
                 </div>
                 <div id="info-dash">
                    Total de exames realizados<br>
                     <center>
-                        <h2>${quantidadeExames}</h2>
+                        <h2>${quantidadeExames} Exames</h2>
                     </center>
                 </div>
                 <div id="info-dash">
                     Média das pontuações<br>
                     <center>
-                        <h2>${mediaPontuacaoExames}</h2>
+                        <h2>${mediaPontuacaoExames} Pontos</h2>
                     </center>
                 </div>
             </div>
