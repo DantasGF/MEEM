@@ -34,6 +34,7 @@ public class CadastraPacienteController extends HttpServlet {
         String telefone = request.getParameter("telefone");
         String email = request.getParameter("email");
         int grauEscolaridade = Integer.parseInt(request.getParameter("grauEscolaridade"));
+        String dataNascimento = request.getParameter("dataNascimento");
         
         Endereco endereco = new Endereco();
         endereco.setRua(rua);
@@ -53,6 +54,9 @@ public class CadastraPacienteController extends HttpServlet {
         paciente.setTelefone(telefone);
         paciente.setEmail(email);
         paciente.setGrauEscolaridade(grauEscolaridade);
+        paciente.setDataNascimento(dataNascimento);
+        
+        System.err.println("Data: " + paciente.getGrauEscolaridade());
         
         PacienteDAO pacienteDAO = new PacienteDAO();
         pacienteDAO.cadastrar(paciente);

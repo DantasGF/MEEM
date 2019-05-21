@@ -31,8 +31,8 @@ public class PacienteDAO {
     public boolean cadastrar(Paciente paciente){
         try {
             String sql = "INSERT INTO paciente (nome, sobrenome, sexo, rua, bairro,"
-                    + " cidade, estado, telefone, email, id_psicologo)"
-                    + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    + " cidade, estado, telefone, email, grau_escolaridade, id_psicologo)"
+                    + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             
             PreparedStatement stmt = this.connection.prepareStatement(sql);
             stmt.setString(1, paciente.getNome());
@@ -44,8 +44,8 @@ public class PacienteDAO {
             stmt.setString(7, paciente.getEndereco().getEstado());
             stmt.setString(8, paciente.getTelefone());
             stmt.setString(9, paciente.getEmail());
-            //stmt.setInt(10, paciente.getGrauEscolaridade());
-            stmt.setInt(10, paciente.getPsicologo().getId());
+            stmt.setInt(10, paciente.getGrauEscolaridade());
+            stmt.setInt(11, paciente.getPsicologo().getId());
             
             stmt.execute();
             stmt.close();
@@ -83,7 +83,7 @@ public class PacienteDAO {
                 paciente.setEndereco(endereco);
                 paciente.setSexo(rs.getString("sexo"));
                 paciente.setTelefone(rs.getString("telefone"));
-                
+                paciente.setGrauEscolaridade(rs.getInt("grau_escolaridade"));
                 pacientes.add(paciente);
             }
             rs.close();
@@ -114,7 +114,7 @@ public class PacienteDAO {
                 paciente.setEndereco(endereco);
                 paciente.setSexo(rs.getString("sexo"));
                 paciente.setTelefone(rs.getString("telefone"));
-                
+                paciente.setGrauEscolaridade(rs.getInt("grau_escolaridade"));
                 return paciente;
             }
         } catch (SQLException ex) {

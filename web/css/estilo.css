@@ -166,3 +166,30 @@ ul, li{
     display: inline-block;
     box-shadow: 2px 2px 10px #CCC;
 }
+
+#btn-novo-exame{
+    border: 1px Solid #009ACD;
+    background: #009ACD;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    float: right;
+    margin-right: 50px;
+    font-weight: bold;
+}
+
+#informacoes-paciente{
+    margin-top: 50px;
+    margin-left: 50px;
+    position:relative;
+}
+
+#botao-paginacao{
+    border: 1px Solid #009ACD;
+    padding: 5px;
+    background: #009ACD;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+}

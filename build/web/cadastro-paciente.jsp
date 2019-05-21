@@ -119,10 +119,15 @@
                                         <option value="0">Analfabeto</option>
                                         <option value="1">0 à 3 anos de estudo</option>
                                         <option value="2">4 à 8+ anos de estudo</option>
+                                    </select>
                                 </center>
                             </td>
                         </tr>
-                        
+                        <tr>
+                            <td>
+                                <input required="true" id="campo-login" name="dataNascimento" type="date">
+                            </td>
+                        </tr>
                         <tr>
                             <td>
                                 <input required="true" id="campo-login" name="email" placeholder="Email">

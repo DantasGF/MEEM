@@ -5,7 +5,13 @@
  */
 package br.edu.fescfafic.meem.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,7 +25,6 @@ public class Pessoa {
     private String cpf;
     private String sexo;
     private Endereco endereco;
-    private Date dataNascimento;
     private String email;
     private String telefone;
     
@@ -73,14 +78,6 @@ public class Pessoa {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
-    }
-
-    public Date getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(Date dataNascimento) {
-        this.dataNascimento = dataNascimento;
     }
 
     public String getEmail() {

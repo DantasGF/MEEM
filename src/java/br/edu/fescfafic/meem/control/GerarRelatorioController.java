@@ -8,6 +8,7 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Image;
+import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.File;
@@ -42,6 +43,7 @@ public class GerarRelatorioController extends HttpServlet {
             Exame exame = exameDAO.recuperarPorExame(idExame);
             
             Document documento = new Document();
+            documento.setPageSize(PageSize.A4);
             response.setHeader("Content-disposition", "filename=Relatório"+ paciente.getNome() +".pdf");
             PdfWriter.getInstance(documento, response.getOutputStream());
             
@@ -59,8 +61,45 @@ public class GerarRelatorioController extends HttpServlet {
                     + ", " + paciente.getEndereco().getBairro() 
                     + ", " + paciente.getEndereco().getCidade() 
                     + " - " + paciente.getEndereco().getEstado()+"\n");
-            paragrafo.add("Telefone: " + paciente.getTelefone() + "\n\n");
-            paragrafo.add("Pontuação do Exame: " + exame.getPontuacao()+"\n\n");
+            paragrafo.add("Telefone: " + paciente.getTelefone() + "\n");
+            
+            if(paciente.getGrauEscolaridade() == 0){
+                paragrafo.add("Grau de escolaridade: Analfabeto\n\n");
+            }
+            else if(paciente.getGrauEscolaridade() == 1){
+                paragrafo.add("Grau de escolaridade: 0 à 3 anos de estudo\n\n");
+            }
+            else if(paciente.getGrauEscolaridade() == 2){
+                paragrafo.add("Grau de escolaridade: 4 à 8+ anos de estudo\n\n");
+            }
+            
+            paragrafo.add("Pontuação do Exame: " + exame.getPontuacao()+"\n");
+            
+            if(paciente.getGrauEscolaridade() == 2 && exame.getPontuacao() > 27 && exame.getPontuacao() <= 30){
+                paragrafo.add("Avaliação: Normal\n");
+            }
+            else if(paciente.getGrauEscolaridade() == 0 || paciente.getGrauEscolaridade() == 1 && exame.getPontuacao() >= 17){
+                paragrafo.add("Avaliação: Normal\n");
+            }
+            else if(paciente.getGrauEscolaridade() == 2 && exame.getPontuacao() <= 24 && exame.getPontuacao() >= 17){
+                paragrafo.add("Avaliação: Demência\n");
+            }
+            else if(paciente.getGrauEscolaridade() == 1 || paciente.getGrauEscolaridade() == 0 && exame.getPontuacao() <= 17){
+                paragrafo.add("Avaliação: Demência\n");
+            }
+            
+            if(exame.getPontuacao() >= 19 && exame.getPontuacao() < 25){
+                paragrafo.add("Escore médio para depressão: Depressão não-complicada\n\n");
+            }
+            else if(exame.getPontuacao() < 19){
+                paragrafo.add("Escore médio para depressão: Prejuízo cognitivo por depressão\n\n");
+            }
+            else if(exame.getPontuacao() > 27){
+                paragrafo.add("Escore médio para depressão: Normal\n\n");
+            }
+            else{
+                paragrafo.add("Escore médio para depressão: Normal\n\n");
+            }
             documento.add(paragrafo);
             
             Paragraph titulo = new Paragraph();

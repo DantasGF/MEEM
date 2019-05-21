@@ -73,10 +73,10 @@
                     <%
                         int totalPagina = (int)request.getSession().getAttribute("totalPagina");
                         for (int i = 1; i <= totalPagina; i++) {
-                                out.println("<a href=./ListarPacientesController?paginacao=" + i + ">" + i + "</a>");
+                                out.println("<a id=\"botao-paginacao\" href=./ListarPacientesController?paginacao=" + i + ">" + i + "</a>");
                         }
                     %>
-                    
+                    <br><br>
                     </center>
                 </div>
                 

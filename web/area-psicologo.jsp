@@ -58,6 +58,13 @@
                         <h2>${mediaPontuacaoExames} Pontos</h2>
                     </center>
                 </div>
+                    
+                <!--<div id="info-dash">
+                    Último paciente cadastrado<br>
+                    <center>
+                        <h2>${mediaPontuacaoExames} Pontos</h2>
+                    </center>
+                </div>-->
             </div>
             </center>
             <div id="aviso">

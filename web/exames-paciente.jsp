@@ -38,13 +38,23 @@
         <div id="area_principal">
             <h1>Exames do Paciente</h1>
             <div id="aviso">
-                <p>
-                    Nome: <b>${paciente.nome} ${paciente.sobrenome}</b> - <a href="exame.jsp?pid=${paciente.id}">Novo Exame</a><br>
+                <p id="informacoes-paciente">
+                    Nome: <b>${paciente.nome} ${paciente.sobrenome}</b> <a id="btn-novo-exame" href="exame.jsp?pid=${paciente.id}">Novo Exame</a><br>
                     <br>Sexo: <b>${paciente.sexo}</b><br>
                     <br>Telefone: <b>${paciente.telefone}</b><br>
                     <br>Endereço: <b>Rua, ${paciente.endereco.rua},
                         ${paciente.endereco.bairro}, ${paciente.endereco.cidade} - ${paciente.endereco.estado}</b><br>
-                <p><br>
+                    <br>Grau de Escolaridade: <b>
+                    <c:if test="${paciente.grauEscolaridade == 0}">
+                        Analfabeto<br>
+                    </c:if>
+                    <c:if test="${paciente.grauEscolaridade == 1}">
+                        0 à 3 anos de estudo<br>
+                    </c:if>
+                    <c:if test="${paciente.grauEscolaridade == 2}">
+                        4 à 8+ anos de estudo<br>
+                    </c:if></b>
+                </p><br>
                 <center>
                     <h2>Exames</h2>
                     <table id="tabela" border="0">
@@ -70,12 +80,20 @@
                             
                             <td id="td-tabela">
                                 <center>
-                                    <c:if test="${exame.pontuacao > 27}">
+                                <c:choose>
+                                    <c:when test="${paciente.grauEscolaridade == 2 && exame.pontuacao >= 27 && exame.pontuacao <= 30}">
                                         Normal
-                                    </c:if>
-                                    <c:if test="${exame.pontuacao <= 27}">
+                                    </c:when>
+                                    <c:when test="${paciente.grauEscolaridade == 1 || paciente.grauEscolaridade == 0 && exame.pontuacao > 17}">
+                                        Normal
+                                    </c:when>
+                                    <c:when test="${paciente.grauEscolaridade == 2 && exame.pontuacao <= 24 && exame.pontuacao >= 17}">
                                         Demência
-                                    </c:if>
+                                    </c:when>
+                                    <c:when test="${paciente.grauEscolaridade == 1 || paciente.grauEscolaridade == 0 && exame.pontuacao <= 17}">
+                                        Demência
+                                    </c:when>
+                                </c:choose>
                                 </center>
                             </td>
                             

@@ -1,10 +1,16 @@
 <jsp:include page="includes/topo.jsp"/>
     <form action="./CadastraPsicologoController" method="POST"><br><br><br>
-        
-        <center>
-            <div id="caixa-login">
+        <div id="barra_lateral_esquerda" style="margin-top: -55px;">
+        <ul>
+            <li>
+                <a href="index.jsp"> <img src="imagens/home.png" width="25" height="25"> Voltar</a>
+            </li>
+        </ul>
+
+    </div>
+            <div id="area_principal">
+            <center><div id="caixa-login">
                 <div id="caixa-login-titulo">Cadastro de Psicólogo</div><br><br>
-            
                 <table border="0">
                     <tr>
                         <td>
@@ -112,6 +118,7 @@
             </div>
             
         </center>
+</div>
     </form><br>
     
 </body>
