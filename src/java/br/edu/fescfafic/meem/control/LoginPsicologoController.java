@@ -45,9 +45,15 @@ public class LoginPsicologoController extends HttpServlet {
         
         LoginDAO loginDAO = new LoginDAO();
         if (loginDAO.validar(login)){
+            
+            
             HttpSession sessao = request.getSession();
             sessao.setAttribute("psicologo", new PsicologoDAO()
                     .buscarPsicologoLogin(login));
+            
+            
+            
+            
             sessao.setAttribute("quantidadePaciente", new PsicologoDAO()
                     .quantidadePacientes(new PsicologoDAO().returnIdPsicologo(login)));
             sessao.setAttribute("quantidadeExames", new ExameDAO()

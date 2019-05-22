@@ -54,7 +54,7 @@ public class CadastraPacienteController extends HttpServlet {
         paciente.setTelefone(telefone);
         paciente.setEmail(email);
         paciente.setGrauEscolaridade(grauEscolaridade);
-        paciente.setDataNascimento(dataNascimento);
+        //paciente.setDataNascimento(dataNascimento);
         
         System.err.println("Data: " + paciente.getGrauEscolaridade());
         
