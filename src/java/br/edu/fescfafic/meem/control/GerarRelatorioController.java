@@ -67,7 +67,7 @@ public class GerarRelatorioController extends HttpServlet {
                 paragrafo.add("Grau de escolaridade: Analfabeto\n\n");
             }
             else if(paciente.getGrauEscolaridade() == 1){
-                paragrafo.add("Grau de escolaridade: 0 à 3 anos de estudo\n\n");
+                paragrafo.add("Grau de escolaridade: 1 à 3 anos de estudo\n\n");
             }
             else if(paciente.getGrauEscolaridade() == 2){
                 paragrafo.add("Grau de escolaridade: 4 à 8+ anos de estudo\n\n");
@@ -75,20 +75,29 @@ public class GerarRelatorioController extends HttpServlet {
             
             paragrafo.add("Pontuação do Exame: " + exame.getPontuacao()+"\n");
             
-            if(paciente.getGrauEscolaridade() == 2 && exame.getPontuacao() > 27 && exame.getPontuacao() <= 30){
+            if(exame.getPontuacao() > 27 && exame.getPontuacao() <= 30){
                 paragrafo.add("Avaliação: Normal\n");
             }
-            else if(paciente.getGrauEscolaridade() == 0 || paciente.getGrauEscolaridade() == 1 && exame.getPontuacao() >= 17){
-                paragrafo.add("Avaliação: Normal\n");
-            }
-            else if(paciente.getGrauEscolaridade() == 2 && exame.getPontuacao() <= 24 && exame.getPontuacao() >= 17){
+            else if(paciente.getGrauEscolaridade() == 1 && exame.getPontuacao() >= 0 && exame.getPontuacao() <= 17){
                 paragrafo.add("Avaliação: Demência\n");
             }
-            else if(paciente.getGrauEscolaridade() == 1 || paciente.getGrauEscolaridade() == 0 && exame.getPontuacao() <= 17){
+            else if(paciente.getGrauEscolaridade() == 0 && exame.getPontuacao() >= 0 && exame.getPontuacao() <= 17){
+                paragrafo.add("Avaliação: Demência\n");
+            }
+            else if(paciente.getGrauEscolaridade() == 1 && exame.getPontuacao() > 17){
+                paragrafo.add("Avaliação: Normal\n");
+            }
+            else if(paciente.getGrauEscolaridade() == 0 && exame.getPontuacao() > 17){
+                paragrafo.add("Avaliação: Normal\n");
+            }
+            else if(paciente.getGrauEscolaridade() == 2 && exame.getPontuacao() >= 17 && exame.getPontuacao() <= 24 ){
+                paragrafo.add("Avaliação: Demência\n");
+            }
+            else{
                 paragrafo.add("Avaliação: Demência\n");
             }
             
-            if(exame.getPontuacao() >= 19 && exame.getPontuacao() < 25){
+            if(exame.getPontuacao() >= 19 && exame.getPontuacao() <= 27){
                 paragrafo.add("Escore médio para depressão: Depressão não-complicada\n\n");
             }
             else if(exame.getPontuacao() < 19){

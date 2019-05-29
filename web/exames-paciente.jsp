@@ -49,7 +49,7 @@
                         Analfabeto<br>
                     </c:if>
                     <c:if test="${paciente.grauEscolaridade == 1}">
-                        0 à 3 anos de estudo<br>
+                        1 à 3 anos de estudo<br>
                     </c:if>
                     <c:if test="${paciente.grauEscolaridade == 2}">
                         4 à 8+ anos de estudo<br>
@@ -81,18 +81,27 @@
                             <td id="td-tabela">
                                 <center>
                                 <c:choose>
-                                    <c:when test="${paciente.grauEscolaridade == 2 && exame.pontuacao >= 27 && exame.pontuacao <= 30}">
+                                    <c:when test="${exame.pontuacao > 27 && exame.pontuacao <= 30}">
                                         Normal
                                     </c:when>
-                                    <c:when test="${paciente.grauEscolaridade == 1 || paciente.grauEscolaridade == 0 && exame.pontuacao > 17}">
+                                    <c:when test="${paciente.grauEscolaridade == 1 && exame.pontuacao >= 0 && exame.pontuacao <= 17}">
+                                        Demência
+                                    </c:when>
+                                    <c:when test="${paciente.grauEscolaridade == 0 && exame.pontuacao >= 0 && exame.pontuacao <= 17}">
+                                        Demência
+                                    </c:when>
+                                    <c:when test="${paciente.grauEscolaridade == 1 && exame.pontuacao > 17}">
+                                        Normal
+                                    </c:when>
+                                    <c:when test="${paciente.grauEscolaridade == 0 && exame.pontuacao > 17}">
                                         Normal
                                     </c:when>
                                     <c:when test="${paciente.grauEscolaridade == 2 && exame.pontuacao <= 24 && exame.pontuacao >= 17}">
                                         Demência
                                     </c:when>
-                                    <c:when test="${paciente.grauEscolaridade == 1 || paciente.grauEscolaridade == 0 && exame.pontuacao <= 17}">
+                                    <c:otherwise>
                                         Demência
-                                    </c:when>
+                                    </c:otherwise>
                                 </c:choose>
                                 </center>
                             </td>
@@ -100,7 +109,7 @@
                             <td id="td-tabela">
                                 <center>
                                     <c:choose>
-                                        <c:when test="${(exame.pontuacao >= 19) and (exame.pontuacao < 25)}">
+                                        <c:when test="${(exame.pontuacao >= 19) && (exame.pontuacao <= 27)}">
                                             Depressão não-complicada
                                         </c:when>
                                         <c:when test="${exame.pontuacao < 19}">

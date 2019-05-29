@@ -82,6 +82,7 @@ public class ExameDAO {
             stmt.setInt(32, exame.getPaciente().getId());
             
             stmt.execute();
+            stmt.close();
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(ExameDAO.class.getName()).log(Level.SEVERE, null, ex);
